@@ -75,7 +75,6 @@
 		527E661417943D01003F07E5 /* numeric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = numeric.h; sourceTree = "<group>"; };
 		527E661517943D01003F07E5 /* proc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = proc.h; sourceTree = "<group>"; };
 		527E661617943D01003F07E5 /* range.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = range.h; sourceTree = "<group>"; };
-		527E661717943D01003F07E5 /* string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string.h; sourceTree = "<group>"; };
 		527E661817943D01003F07E5 /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
 		527E661917943D01003F07E5 /* variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = variable.h; sourceTree = "<group>"; };
 		527E661A17943D01003F07E5 /* mruby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mruby.h; sourceTree = "<group>"; };
@@ -160,7 +159,6 @@
 				527E661417943D01003F07E5 /* numeric.h */,
 				527E661517943D01003F07E5 /* proc.h */,
 				527E661617943D01003F07E5 /* range.h */,
-				527E661717943D01003F07E5 /* string.h */,
 				527E661817943D01003F07E5 /* value.h */,
 				527E661917943D01003F07E5 /* variable.h */,
 			);
