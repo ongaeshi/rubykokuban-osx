@@ -1,15 +1,15 @@
 #include "rubybasic/ScriptEngine.hpp"
 
-#include "rubybasic/BindApplication.hpp"
-#include "rubybasic/BindGraphics.hpp"
-#include "rubybasic/BindInput.hpp"
 #include "mruby.h"
 #include "mruby/class.h"
 #include "mruby/compile.h"
+#include "rubybasic/BindApplication.hpp"
+#include "rubybasic/BindGraphics.hpp"
+#include "rubybasic/BindInput.hpp"
 
 namespace rubybasic {
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 ScriptEngine::ScriptEngine(const char* aFilename)
 : mFilename(aFilename)
 , mMrb(NULL)
@@ -18,25 +18,25 @@ ScriptEngine::ScriptEngine(const char* aFilename)
     load(mFilename);
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 ScriptEngine::~ScriptEngine()
 {
     close();
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 void ScriptEngine::setup()
 {
     // bind
-    BindGraphics::Bind(mMrb);
     BindApplication::Bind(mMrb);
+    BindGraphics::Bind(mMrb);
     BindInput::Bind(mMrb);
 
     // call setup
     funcallIf("setup");
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 mrb_value ScriptEngine::funcallIf(const char* aName)
 {
     if (mMrb && isExistFunction(kernel_obj(), aName)) {
@@ -50,7 +50,7 @@ mrb_value ScriptEngine::funcallIf(const char* aName)
     return mrb_nil_value();
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 mrb_value ScriptEngine::funcallIf(const char* aName, mrb_value aArg1, mrb_value aArg2)
 {
     if (mMrb && isExistFunction(kernel_obj(), aName)) {
@@ -64,7 +64,7 @@ mrb_value ScriptEngine::funcallIf(const char* aName, mrb_value aArg1, mrb_value 
     return mrb_nil_value();
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 mrb_value ScriptEngine::funcallIf(const char* aName, mrb_value aArg1, mrb_value aArg2, mrb_value aArg3)
 {
     if (mMrb && isExistFunction(kernel_obj(), aName)) {
@@ -78,7 +78,7 @@ mrb_value ScriptEngine::funcallIf(const char* aName, mrb_value aArg1, mrb_value 
     return mrb_nil_value();
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 void ScriptEngine::reload()
 {
     reopen();  // comment out?
@@ -86,13 +86,13 @@ void ScriptEngine::reload()
     setup();
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 void ScriptEngine::open()
 {
     mMrb = mrb_open();
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 void ScriptEngine::load(const char* aFilename)
 {
     FILE *fd = fopen(mFilename, "r");
@@ -100,7 +100,7 @@ void ScriptEngine::load(const char* aFilename)
     fclose(fd);
 }
     
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 void ScriptEngine::close()
 {
     if (mMrb) {
@@ -109,14 +109,14 @@ void ScriptEngine::close()
     }
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 void ScriptEngine::reopen()
 {
     close();
     open();
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 bool ScriptEngine::isExistFunction(mrb_value aSelf, const char* aFuncName)
 {
     struct RClass *c = mrb_class(mMrb, aSelf);
@@ -124,7 +124,7 @@ bool ScriptEngine::isExistFunction(mrb_value aSelf, const char* aFuncName)
     return p != NULL;
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 void ScriptEngine::closeOnException()
 {
     if (mMrb->exc) {
@@ -135,3 +135,4 @@ void ScriptEngine::closeOnException()
 }
 
 }
+

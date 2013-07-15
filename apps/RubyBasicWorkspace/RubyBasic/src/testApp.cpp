@@ -1,11 +1,6 @@
 #include "testApp.hpp"
 
 #include "rubybasic/BindInput.hpp"
-#include "mruby.h"
-#include "mruby/class.h"
-#include "mruby/compile.h"
-#include <stdio.h>
-#include <unistd.h>
 
 //--------------------------------------------------------------
 testApp::testApp(const char* aFilename)
