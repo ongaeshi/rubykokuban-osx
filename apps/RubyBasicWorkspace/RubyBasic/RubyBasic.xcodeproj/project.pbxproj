@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		527E661B17943D01003F07E5 /* libmruby.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 527E660817943D01003F07E5 /* libmruby.a */; };
+		527E6634179440C8003F07E5 /* BindApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E6625179440C8003F07E5 /* BindApplication.cpp */; };
+		527E6635179440C8003F07E5 /* BindGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E6627179440C8003F07E5 /* BindGraphics.cpp */; };
+		527E6636179440C8003F07E5 /* BindInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E6629179440C8003F07E5 /* BindInput.cpp */; };
+		527E6637179440C8003F07E5 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E662B179440C8003F07E5 /* Input.cpp */; };
+		527E6638179440C8003F07E5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E662D179440C8003F07E5 /* main.cpp */; };
+		527E6639179440C8003F07E5 /* Mouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E662E179440C8003F07E5 /* Mouse.cpp */; };
+		527E663A179440C8003F07E5 /* ScriptEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E6630179440C8003F07E5 /* ScriptEngine.cpp */; };
+		527E663B179440C8003F07E5 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E6632179440C8003F07E5 /* testApp.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -19,8 +27,6 @@
 		E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9770E8CC7DD009D7055 /* CoreServices.framework */; };
 		E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9790E8CC7DD009D7055 /* OpenGL.framework */; };
 		E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
-		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
-		E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
 		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
@@ -78,6 +84,21 @@
 		527E661817943D01003F07E5 /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
 		527E661917943D01003F07E5 /* variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = variable.h; sourceTree = "<group>"; };
 		527E661A17943D01003F07E5 /* mruby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mruby.h; sourceTree = "<group>"; };
+		527E6625179440C8003F07E5 /* BindApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindApplication.cpp; sourceTree = "<group>"; };
+		527E6626179440C8003F07E5 /* BindApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindApplication.hpp; sourceTree = "<group>"; };
+		527E6627179440C8003F07E5 /* BindGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindGraphics.cpp; sourceTree = "<group>"; };
+		527E6628179440C8003F07E5 /* BindGraphics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindGraphics.hpp; sourceTree = "<group>"; };
+		527E6629179440C8003F07E5 /* BindInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindInput.cpp; sourceTree = "<group>"; };
+		527E662A179440C8003F07E5 /* BindInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindInput.hpp; sourceTree = "<group>"; };
+		527E662B179440C8003F07E5 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
+		527E662C179440C8003F07E5 /* Input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
+		527E662D179440C8003F07E5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		527E662E179440C8003F07E5 /* Mouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mouse.cpp; sourceTree = "<group>"; };
+		527E662F179440C8003F07E5 /* Mouse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mouse.hpp; sourceTree = "<group>"; };
+		527E6630179440C8003F07E5 /* ScriptEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptEngine.cpp; sourceTree = "<group>"; };
+		527E6631179440C8003F07E5 /* ScriptEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScriptEngine.hpp; sourceTree = "<group>"; };
+		527E6632179440C8003F07E5 /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
+		527E6633179440C8003F07E5 /* testApp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = testApp.hpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -90,9 +111,6 @@
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
 		E4B69B5B0A3A1756003C02F2 /* RubyBasicDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RubyBasicDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
-		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
-		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		E4C2424510CC5A17004149E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -235,10 +253,22 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				527E6625179440C8003F07E5 /* BindApplication.cpp */,
+				527E6626179440C8003F07E5 /* BindApplication.hpp */,
+				527E6627179440C8003F07E5 /* BindGraphics.cpp */,
+				527E6628179440C8003F07E5 /* BindGraphics.hpp */,
+				527E6629179440C8003F07E5 /* BindInput.cpp */,
+				527E662A179440C8003F07E5 /* BindInput.hpp */,
+				527E662B179440C8003F07E5 /* Input.cpp */,
+				527E662C179440C8003F07E5 /* Input.hpp */,
+				527E662D179440C8003F07E5 /* main.cpp */,
+				527E662E179440C8003F07E5 /* Mouse.cpp */,
+				527E662F179440C8003F07E5 /* Mouse.hpp */,
+				527E6630179440C8003F07E5 /* ScriptEngine.cpp */,
+				527E6631179440C8003F07E5 /* ScriptEngine.hpp */,
+				527E6632179440C8003F07E5 /* testApp.cpp */,
+				527E6633179440C8003F07E5 /* testApp.hpp */,
 				527E660717943D01003F07E5 /* mruby */,
-				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
-				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -339,8 +369,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
+				527E6634179440C8003F07E5 /* BindApplication.cpp in Sources */,
+				527E6635179440C8003F07E5 /* BindGraphics.cpp in Sources */,
+				527E6636179440C8003F07E5 /* BindInput.cpp in Sources */,
+				527E6637179440C8003F07E5 /* Input.cpp in Sources */,
+				527E6638179440C8003F07E5 /* main.cpp in Sources */,
+				527E6639179440C8003F07E5 /* Mouse.cpp in Sources */,
+				527E663A179440C8003F07E5 /* ScriptEngine.cpp in Sources */,
+				527E663B179440C8003F07E5 /* testApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
