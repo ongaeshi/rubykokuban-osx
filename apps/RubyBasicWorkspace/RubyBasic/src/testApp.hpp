@@ -1,8 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ScriptEngine.hpp"
-#include "Input.hpp"
+#include "rubybasic/ScriptEngine.hpp"
+#include "rubybasic/Input.hpp"
 
 struct mrb_state;
 

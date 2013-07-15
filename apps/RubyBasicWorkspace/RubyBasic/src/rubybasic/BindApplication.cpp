@@ -1,4 +1,4 @@
-#include "BindApplication.hpp"
+#include "rubybasic/BindApplication.hpp"
 
 #include "mruby.h"
 #include "ofAppRunner.h"

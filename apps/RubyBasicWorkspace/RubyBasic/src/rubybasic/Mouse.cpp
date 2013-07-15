@@ -1,4 +1,4 @@
-#include "Mouse.hpp"
+#include "rubybasic/Mouse.hpp"
 
 namespace rubybasic {
 //------------------------------------------------------------

@@ -1,8 +1,8 @@
-#include "ScriptEngine.hpp"
+#include "rubybasic/ScriptEngine.hpp"
 
-#include "BindApplication.hpp"
-#include "BindGraphics.hpp"
-#include "BindInput.hpp"
+#include "rubybasic/BindApplication.hpp"
+#include "rubybasic/BindGraphics.hpp"
+#include "rubybasic/BindInput.hpp"
 #include "mruby.h"
 #include "mruby/class.h"
 #include "mruby/compile.h"

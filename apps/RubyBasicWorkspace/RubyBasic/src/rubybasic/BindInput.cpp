@@ -1,6 +1,6 @@
-#include "BindInput.hpp"
+#include "rubybasic/BindInput.hpp"
 
-#include "Input.hpp"
+#include "rubybasic/Input.hpp"
 #include "mruby.h"
 #include "ofAppRunner.h"
 

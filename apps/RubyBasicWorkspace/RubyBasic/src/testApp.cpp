@@ -1,6 +1,6 @@
 #include "testApp.hpp"
 
-#include "BindInput.hpp"
+#include "rubybasic/BindInput.hpp"
 #include "mruby.h"
 #include "mruby/class.h"
 #include "mruby/compile.h"
