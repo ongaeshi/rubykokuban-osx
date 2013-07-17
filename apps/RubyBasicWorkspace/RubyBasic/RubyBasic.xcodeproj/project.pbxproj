@@ -16,6 +16,8 @@
 		527E664C17944142003F07E5 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E664317944142003F07E5 /* Input.cpp */; };
 		527E664D17944142003F07E5 /* Mouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E664517944142003F07E5 /* Mouse.cpp */; };
 		527E664E17944142003F07E5 /* ScriptEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E664717944142003F07E5 /* ScriptEngine.cpp */; };
+		527E66551795A044003F07E5 /* mrubybind.cc in Sources */ = {isa = PBXBuildFile; fileRef = 527E66501795A044003F07E5 /* mrubybind.cc */; };
+		527E66561795A044003F07E5 /* mrubybind.inc in Sources */ = {isa = PBXBuildFile; fileRef = 527E66531795A044003F07E5 /* mrubybind.inc */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -99,6 +101,12 @@
 		527E664617944142003F07E5 /* Mouse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mouse.hpp; sourceTree = "<group>"; };
 		527E664717944142003F07E5 /* ScriptEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptEngine.cpp; sourceTree = "<group>"; };
 		527E664817944142003F07E5 /* ScriptEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScriptEngine.hpp; sourceTree = "<group>"; };
+		527E66501795A044003F07E5 /* mrubybind.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mrubybind.cc; sourceTree = "<group>"; };
+		527E66511795A044003F07E5 /* mrubybind.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mrubybind.dat; sourceTree = "<group>"; };
+		527E66521795A044003F07E5 /* mrubybind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mrubybind.h; sourceTree = "<group>"; };
+		527E66531795A044003F07E5 /* mrubybind.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = mrubybind.inc; sourceTree = "<group>"; };
+		527E66541795A044003F07E5 /* mrubybind_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mrubybind_types.h; sourceTree = "<group>"; };
+		527E66571795A0E3003F07E5 /* string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -165,6 +173,7 @@
 		527E660A17943D01003F07E5 /* mruby */ = {
 			isa = PBXGroup;
 			children = (
+				527E66571795A0E3003F07E5 /* string.h */,
 				527E660B17943D01003F07E5 /* array.h */,
 				527E660C17943D01003F07E5 /* class.h */,
 				527E660D17943D01003F07E5 /* compile.h */,
@@ -201,6 +210,19 @@
 			);
 			path = rubybasic;
 			sourceTree = "<group>";
+		};
+		527E664F1795A044003F07E5 /* mrubybind */ = {
+			isa = PBXGroup;
+			children = (
+				527E66501795A044003F07E5 /* mrubybind.cc */,
+				527E66511795A044003F07E5 /* mrubybind.dat */,
+				527E66521795A044003F07E5 /* mrubybind.h */,
+				527E66531795A044003F07E5 /* mrubybind.inc */,
+				527E66541795A044003F07E5 /* mrubybind_types.h */,
+			);
+			name = mrubybind;
+			path = src/mrubybind;
+			sourceTree = SOURCE_ROOT;
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
@@ -275,8 +297,9 @@
 				527E662D179440C8003F07E5 /* main.cpp */,
 				527E6632179440C8003F07E5 /* testApp.cpp */,
 				527E6633179440C8003F07E5 /* testApp.hpp */,
-				527E663C17944142003F07E5 /* rubybasic */,
+				527E664F1795A044003F07E5 /* mrubybind */,
 				527E660717943D01003F07E5 /* mruby */,
+				527E663C17944142003F07E5 /* rubybasic */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -385,6 +408,8 @@
 				527E664C17944142003F07E5 /* Input.cpp in Sources */,
 				527E664D17944142003F07E5 /* Mouse.cpp in Sources */,
 				527E664E17944142003F07E5 /* ScriptEngine.cpp in Sources */,
+				527E66551795A044003F07E5 /* mrubybind.cc in Sources */,
+				527E66561795A044003F07E5 /* mrubybind.inc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
