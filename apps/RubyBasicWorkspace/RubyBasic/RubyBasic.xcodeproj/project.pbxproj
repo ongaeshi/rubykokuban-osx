@@ -106,7 +106,6 @@
 		527E66521795A044003F07E5 /* mrubybind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mrubybind.h; sourceTree = "<group>"; };
 		527E66531795A044003F07E5 /* mrubybind.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = mrubybind.inc; sourceTree = "<group>"; };
 		527E66541795A044003F07E5 /* mrubybind_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mrubybind_types.h; sourceTree = "<group>"; };
-		527E66571795A0E3003F07E5 /* string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -173,7 +172,6 @@
 		527E660A17943D01003F07E5 /* mruby */ = {
 			isa = PBXGroup;
 			children = (
-				527E66571795A0E3003F07E5 /* string.h */,
 				527E660B17943D01003F07E5 /* array.h */,
 				527E660C17943D01003F07E5 /* class.h */,
 				527E660D17943D01003F07E5 /* compile.h */,
