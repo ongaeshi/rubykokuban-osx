@@ -5,8 +5,23 @@
 #include "ofGraphics.h"
 
 namespace {
-    static void set_fill()                                                           { ofFill(); }
-    static void set_no_fill()                                                        {  ofNoFill(); }
+    static mrb_value set_fill(mrb_state *mrb, mrb_value self)
+    {
+        mrb_bool is_fill;
+
+        if (mrb_get_args(mrb, "|b", &is_fill) == 0) {
+            ofFill();
+            return mrb_bool_value(true);
+        } else {
+            if (is_fill)
+                ofFill();
+            else
+                ofNoFill();
+            return mrb_bool_value(is_fill);
+        }
+    }
+
+    static void set_no_fill()                                                        { ofNoFill(); }
     static bool is_fill()                                                            { return ofGetFill() == OF_FILLED; }
     static void set_line_width(float width)                                          { ofSetLineWidth(width); }
     static void set_color(int r, int g, int b)                                       { ofSetColor(r, g, b); }
@@ -20,11 +35,12 @@ namespace {
     static void text(string str, float x, float y)                                   { ofDrawBitmapString(str, x, y); }
 }
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------
 void BindGraphics::Bind(mrb_state* mrb)
 {
     mrubybind::MrubyBind b(mrb);
-    b.bind("set_fill", set_fill);
+
+    mrb_define_method(mrb, mrb->kernel_module, "set_fill", set_fill, MRB_ARGS_OPT(1));
     b.bind("set_no_fill", set_no_fill);
     b.bind("is_fill", is_fill);
     b.bind("set_line_width", set_line_width);
@@ -39,4 +55,3 @@ void BindGraphics::Bind(mrb_state* mrb)
     b.bind("text", text);
 }
 
-//EOF
