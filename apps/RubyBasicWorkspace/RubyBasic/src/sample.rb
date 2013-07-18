@@ -1,3 +1,8 @@
+def setup
+  set_window_size(580, 600)
+  # set_window_pos(0, 0)
+end
+
 def draw
   set_background(255, 255, 255)
   
@@ -36,13 +41,24 @@ def draw
   rect_rounded(350, 400, 100, 100, 30)
 
   set_color(0, 0, 0)
-  text("#{get_frame_rate} fps", 10, 15)
-  text("Mouse: #{InputUtils.mouse_debug_str}", 10, 30)
+  
+  text(DebugInfo.fps, 10, 15)
+  text(DebugInfo.window, 10, 30)
+  text(DebugInfo.mouse, 10, 45)
 end
 
-module InputUtils
-  def self.mouse_debug_str
-    str = format("(%4d, %4d)", Input.mouse_x, Input.mouse_y)
+module DebugInfo
+  def self.fps
+    "#{format("%3.2f", get_frame_rate)} fps"
+  end
+
+  def self.window
+    "window_pos: (#{window_pos_x}, #{window_pos_y}), size: (#{window_width}, #{window_height})"
+  end
+
+  def self.mouse
+    str = "mouse: "
+    str += format("(%4d, %4d)", Input.mouse_x, Input.mouse_y)
 
     # press?
     str += " press?: "
