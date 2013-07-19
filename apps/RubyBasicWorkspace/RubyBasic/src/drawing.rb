@@ -23,34 +23,12 @@ def draw
   end
 
   set_color(0, 0, 0)
-  text("#{get_frame_rate} fps", 10, 15)
-  text("Mouse: #{mouse_debug_str}", 10, 30)
-  text("#{@lines.size} + #{@backgrounds.size}", 10, 45)
+  text(DebugInfo.fps, 10, 15)
+  text(DebugInfo.window, 10, 30)
+  text(DebugInfo.mouse, 10, 45)
 end
 
-def mouse_debug_str
-  str = format("(%4d, %4d)", Input.mouse_x, Input.mouse_y)
-
-  # press?
-  str += " press?: "
-  str += (0..2).map {|v|
-    Input.mouse_press?(v) ? '1' : '0'
-  }.join('')
-
-  # down?
-  str += " down?: "
-  str += (0..2).map {|v|
-    Input.mouse_down?(v) ? '1' : '0'
-  }.join('')
-
-  # release?
-  str += " release?: "
-  str += (0..2).map {|v|
-    Input.mouse_release?(v) ? '1' : '0'
-  }.join('')
-
-  str
-end
+# ----------------------------------------------------------
 
 class Circle
   attr_reader :x
