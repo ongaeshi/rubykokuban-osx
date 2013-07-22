@@ -8,7 +8,7 @@ def setup
 
   set_background(255, 255, 255)
   
-  @console = Console.new(20, 560, 600, 190)
+  Console.init(20, 560)
 end
 
 def update
@@ -18,7 +18,7 @@ end
 def draw
   @shapes.each {|s| s.draw}
 
-  @console.draw
+  Console.draw
 
   set_color(0, 0, 0)
   text(DebugInfo.fps, 10, 15)
@@ -41,10 +41,11 @@ class Circle
   end
 
   def update
+    Console.p(@pos)
+
     if !@dragged
       if Input.mouse_press?(0)
         # ドラッグ位置のずれ補正が必要
-        @console.puts("text")
         @dragged = true if (@pos.lengh_square(Input.mouse_x, Input.mouse_y) < 50**2)
       end
     else
@@ -74,28 +75,22 @@ end
 # end
 
 class Console
-  def initialize(x, y, width, height)
+  def self.init(x, y, width = 600, height = 190, line_num = 13)
     @x = x
     @y = y
     @width = width
     @height = height
-
-    @text = <<EOF
-fkldsjafsdlkj
-fdsalkfjskflj
-fdsaklfjdsfkaj
-EOF
+    @line_num = line_num
+    @text = ""
   end
 
-  def print(str)
-    @text = str + @text
+  def self.p(*args)
+    @text = args.map{|obj| obj.inspect }.join("\n") + "\n" + @text
   end
 
-  def puts(str)
-    @text = str + "\n" + @text
-  end
-
-  def draw
+  def self.draw
+    @text = @text.split("\n")[0, @line_num].join("\n")
+    
     set_fill
     set_color(255, 255, 255)
     rect(@x, @y, @width, @height)
