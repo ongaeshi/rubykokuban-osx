@@ -4,21 +4,26 @@ def setup
   # set_window_pos(0, 0)
 
   @shapes = []
+  @shapes << Triangle.new(Pos.new(180, 370))
   @shapes << Circle.new(Pos.new(320, 200))
+  @shapes << Rect.new(Pos.new(460, 370))
 
   set_background(255, 255, 255)
   
-  Console.init(20, 560)
+  # Console.init(20, 560)
 end
 
 def update
-  @shapes.each {|s| s.update}
+  @shapes.each do |s|
+    s.update
+    break if s.dragged
+  end
 end
 
 def draw
-  @shapes.each {|s| s.draw}
+  @shapes.reverse.each {|s| s.draw}
 
-  Console.draw
+  # Console.draw
 
   set_color(0, 0, 0)
   text(DebugInfo.fps, 10, 15)
@@ -35,25 +40,27 @@ class Pos < Struct.new(:x, :y)
 end
 
 class Circle
+  attr_reader :dragged
+
   def initialize(pos)
     @pos = pos
     @dragged = false
   end
 
   def update
-    Console.p(@pos)
+    # Console.p(@pos)
 
     if !@dragged
       if Input.mouse_press?(0)
-        # ドラッグ位置のずれ補正が必要
         @dragged = true if (@pos.lengh_square(Input.mouse_x, Input.mouse_y) < 50**2)
+        @offset = Pos.new(@pos.x - Input.mouse_x, @pos.y - Input.mouse_y)
       end
     else
       if !Input.mouse_down?(0)
         @dragged = false
       else
-        @pos.x = Input.mouse_x
-        @pos.y = Input.mouse_y
+        @pos.x = Input.mouse_x + @offset.x
+        @pos.y = Input.mouse_y + @offset.y
       end
     end
   end
@@ -62,6 +69,72 @@ class Circle
     set_fill
     set_color(87, 25, 122)
     circle(@pos.x, @pos.y, 50)
+  end
+end
+
+class Triangle
+  attr_reader :dragged
+
+  def initialize(pos)
+    @pos = pos
+    @dragged = false
+  end
+
+  def update
+    # Console.p(@pos)
+
+    if !@dragged
+      if Input.mouse_press?(0)
+        @dragged = true if (@pos.lengh_square(Input.mouse_x, Input.mouse_y) < 50**2)
+        @offset = Pos.new(@pos.x - Input.mouse_x, @pos.y - Input.mouse_y)
+      end
+    else
+      if !Input.mouse_down?(0)
+        @dragged = false
+      else
+        @pos.x = Input.mouse_x + @offset.x
+        @pos.y = Input.mouse_y + @offset.y
+      end
+    end
+  end
+  
+  def draw
+    set_fill
+    set_color(220, 73, 0)
+    triangle(@pos.x, @pos.y - 43, @pos.x - 50, @pos.y + 43, @pos.x + 50, @pos.y + 43)
+  end
+end
+
+class Rect
+  attr_reader :dragged
+
+  def initialize(pos)
+    @pos = pos
+    @dragged = false
+  end
+
+  def update
+    # Console.p(@pos)
+
+    if !@dragged
+      if Input.mouse_press?(0)
+        @dragged = true if (@pos.lengh_square(Input.mouse_x, Input.mouse_y) < 50**2)
+        @offset = Pos.new(@pos.x - Input.mouse_x, @pos.y - Input.mouse_y)
+      end
+    else
+      if !Input.mouse_down?(0)
+        @dragged = false
+      else
+        @pos.x = Input.mouse_x + @offset.x
+        @pos.y = Input.mouse_y + @offset.y
+      end
+    end
+  end
+  
+  def draw
+    set_fill
+    set_color(51, 106, 21)
+    rect(@pos.x - 50, @pos.y - 50, 100, 100)
   end
 end
 
