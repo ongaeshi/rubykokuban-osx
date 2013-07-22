@@ -4,6 +4,8 @@
 #include "mruby/class.h"
 #include "mruby/compile.h"
 #include "mruby/irep.h"
+#include "mruby/string.h"
+#include "ofMain.h"
 #include "rubybasic/BindApplication.hpp"
 #include "rubybasic/BindGraphics.hpp"
 #include "rubybasic/BindInput.hpp"
@@ -135,6 +137,7 @@ const uint8_t DebugInfo[] = {
 ScriptEngine::ScriptEngine(const char* aFilename)
 : mFilename(aFilename)
 , mMrb(NULL)
+, mErrorMsg()
 {
     open();
     load(mFilename);
@@ -204,6 +207,18 @@ mrb_value ScriptEngine::funcallIf(const char* aName, mrb_value aArg1, mrb_value 
 }
 
 //----------------------------------------------------------
+void ScriptEngine::draw()
+{
+    if (mMrb) {
+        funcallIf("draw");
+    } else {
+        ofSetColor(0, 0, 0);
+        ofBackground(255, 255, 255);
+        ofDrawBitmapString(mErrorMsg, 20, 20);
+    }
+}
+
+//----------------------------------------------------------
 void ScriptEngine::reload()
 {
     reopen();  // comment out?
@@ -256,13 +271,11 @@ void ScriptEngine::closeOnException()
         // Kernel.p
         mrb_p(mMrb, mrb_obj_value(mMrb->exc));
 
-        // Console.p
-        {
-            mrb_value str = mrb_funcall(mMrb, mrb_obj_value(mMrb->exc), "inspect", 0);
-            mrb_value console = mrb_obj_value(mrb_class_get(mMrb, "Console"));
-            mrb_funcall(mMrb, console, "p", 1, str);
-        }
+        // Save error message & Draw to display
+        mrb_value str = mrb_funcall(mMrb, mrb_obj_value(mMrb->exc), "inspect", 0);
+        mErrorMsg = mrb_string_value_cstr(mMrb, &str);
 
+        // Close mrb
         mrb_close(mMrb);
         mMrb = NULL;
     }

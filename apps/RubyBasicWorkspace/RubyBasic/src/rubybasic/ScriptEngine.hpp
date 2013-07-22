@@ -1,6 +1,7 @@
 #pragma once
 
 #include "mruby.h"
+#include <string>
 
 //----------------------------------------------------------
 namespace rubybasic {
@@ -19,6 +20,7 @@ public:
     mrb_value funcallIf(const char* aName, mrb_value aArg1, mrb_value aArg2);
     mrb_value funcallIf(const char* aName, mrb_value aArg1, mrb_value aArg2, mrb_value aArg3);
 
+    void draw();
     void reload();
 
 private:
@@ -35,6 +37,7 @@ private:
 
     const char* mFilename;
     mrb_state*  mMrb;
+    std::string mErrorMsg;
 };
 
 }

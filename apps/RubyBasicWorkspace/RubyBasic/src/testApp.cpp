@@ -32,7 +32,7 @@ void testApp::update()
 //--------------------------------------------------------------
 void testApp::draw()
 {
-    mScriptEngine.funcallIf("draw");
+    mScriptEngine.draw();
 }
 
 //--------------------------------------------------------------
