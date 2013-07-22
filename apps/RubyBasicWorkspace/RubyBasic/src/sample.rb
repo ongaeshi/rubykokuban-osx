@@ -6,7 +6,8 @@ def setup
   @shapes = []
   @shapes << Triangle.new(Pos.new(180, 370))
   @shapes << Circle.new(Pos.new(320, 200))
-  @shapes << Rect.new(Pos.new(460, 370))
+  @shapes << RectRounded.new(Pos.new(460, 370))
+  @shapes << Rect.new(Pos.new(320, 540))
 
   set_background(255, 255, 255)
   
@@ -39,7 +40,7 @@ class Pos < Struct.new(:x, :y)
   end
 end
 
-class Circle
+module IDraggable
   attr_reader :dragged
 
   def initialize(pos)
@@ -48,14 +49,14 @@ class Circle
   end
 
   def update
-    # Console.p(@pos)
-
     if !@dragged
       if Input.mouse_press?(0)
         @dragged = true if (@pos.lengh_square(Input.mouse_x, Input.mouse_y) < 50**2)
         @offset = Pos.new(@pos.x - Input.mouse_x, @pos.y - Input.mouse_y)
       end
     else
+      # Console.p(@pos)
+
       if !Input.mouse_down?(0)
         @dragged = false
       else
@@ -64,6 +65,10 @@ class Circle
       end
     end
   end
+end
+
+class Circle
+  include IDraggable
   
   def draw
     set_fill
@@ -73,31 +78,8 @@ class Circle
 end
 
 class Triangle
-  attr_reader :dragged
+  include IDraggable
 
-  def initialize(pos)
-    @pos = pos
-    @dragged = false
-  end
-
-  def update
-    # Console.p(@pos)
-
-    if !@dragged
-      if Input.mouse_press?(0)
-        @dragged = true if (@pos.lengh_square(Input.mouse_x, Input.mouse_y) < 50**2)
-        @offset = Pos.new(@pos.x - Input.mouse_x, @pos.y - Input.mouse_y)
-      end
-    else
-      if !Input.mouse_down?(0)
-        @dragged = false
-      else
-        @pos.x = Input.mouse_x + @offset.x
-        @pos.y = Input.mouse_y + @offset.y
-      end
-    end
-  end
-  
   def draw
     set_fill
     set_color(220, 73, 0)
@@ -106,31 +88,8 @@ class Triangle
 end
 
 class Rect
-  attr_reader :dragged
+  include IDraggable
 
-  def initialize(pos)
-    @pos = pos
-    @dragged = false
-  end
-
-  def update
-    # Console.p(@pos)
-
-    if !@dragged
-      if Input.mouse_press?(0)
-        @dragged = true if (@pos.lengh_square(Input.mouse_x, Input.mouse_y) < 50**2)
-        @offset = Pos.new(@pos.x - Input.mouse_x, @pos.y - Input.mouse_y)
-      end
-    else
-      if !Input.mouse_down?(0)
-        @dragged = false
-      else
-        @pos.x = Input.mouse_x + @offset.x
-        @pos.y = Input.mouse_y + @offset.y
-      end
-    end
-  end
-  
   def draw
     set_fill
     set_color(51, 106, 21)
@@ -138,13 +97,18 @@ class Rect
   end
 end
 
-# class Draggable
-#   def initialize(pos, radius)
-#   end
+class RectRounded
+  include IDraggable
 
-#   def start?(x, y)
-#   end
-  
-# end
+  def draw
+    set_fill
+    set_line_width(1)
+    set_color(196, 0, 230)
+    rect_rounded(@pos.x - 50, @pos.y - 50, 100, 100, 30)
+  end
+end
+
+
+
 
 
