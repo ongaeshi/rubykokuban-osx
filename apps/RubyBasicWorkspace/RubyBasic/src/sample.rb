@@ -9,6 +9,7 @@ def setup
   @y = RADIUS
   @speed = SPEED
 
+  srand
   p rand()
   p rand(100)
 end

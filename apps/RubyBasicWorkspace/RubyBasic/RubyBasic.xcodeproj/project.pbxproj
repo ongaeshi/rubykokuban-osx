@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		521F408417A3B3DC003CF149 /* BindMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521F408217A3B3DC003CF149 /* BindMath.cpp */; };
 		527E661B17943D01003F07E5 /* libmruby.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 527E660817943D01003F07E5 /* libmruby.a */; };
 		527E6638179440C8003F07E5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E662D179440C8003F07E5 /* main.cpp */; };
 		527E663B179440C8003F07E5 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E6632179440C8003F07E5 /* testApp.cpp */; };
@@ -69,6 +70,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		521F408217A3B3DC003CF149 /* BindMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindMath.cpp; sourceTree = "<group>"; };
+		521F408317A3B3DC003CF149 /* BindMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindMath.hpp; sourceTree = "<group>"; };
 		527E660817943D01003F07E5 /* libmruby.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmruby.a; sourceTree = "<group>"; };
 		527E660917943D01003F07E5 /* mrbconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mrbconf.h; sourceTree = "<group>"; };
 		527E660B17943D01003F07E5 /* array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = array.h; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 		527E663C17944142003F07E5 /* rubybasic */ = {
 			isa = PBXGroup;
 			children = (
+				521F408217A3B3DC003CF149 /* BindMath.cpp */,
+				521F408317A3B3DC003CF149 /* BindMath.hpp */,
 				527E663D17944142003F07E5 /* BindApplication.cpp */,
 				527E663E17944142003F07E5 /* BindApplication.hpp */,
 				527E663F17944142003F07E5 /* BindGraphics.cpp */,
@@ -408,6 +413,7 @@
 				527E664E17944142003F07E5 /* ScriptEngine.cpp in Sources */,
 				527E66551795A044003F07E5 /* mrubybind.cc in Sources */,
 				527E66561795A044003F07E5 /* mrubybind.inc in Sources */,
+				521F408417A3B3DC003CF149 /* BindMath.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
