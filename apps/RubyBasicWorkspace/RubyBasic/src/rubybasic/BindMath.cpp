@@ -7,8 +7,14 @@
 namespace {
     static mrb_value srand(mrb_state *mrb, mrb_value self)
     {
-        // support srand(int)
-        ofSeedRandom();
+        mrb_int seed;
+
+        if (mrb_get_args(mrb, "|i", 
+                         &seed) == 1) {
+            ofSeedRandom(seed);
+        } else {
+            ofSeedRandom();
+        }
 
         return mrb_nil_value();
     }

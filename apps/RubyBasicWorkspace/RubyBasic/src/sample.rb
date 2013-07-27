@@ -9,9 +9,7 @@ def setup
   @y = RADIUS
   @speed = SPEED
 
-  srand
-  p rand()
-  p rand(100)
+  test_rand
 end
 
 def update
@@ -35,4 +33,13 @@ def draw
   text(DebugInfo.fps, 10, 15)
   text(DebugInfo.window, 10, 30)
   text(DebugInfo.mouse, 10, 45)
+end
+
+# ----------------------------------------------------------
+
+def test_rand
+  srand
+  srand(10)
+  p rand()
+  p rand(100)
 end
