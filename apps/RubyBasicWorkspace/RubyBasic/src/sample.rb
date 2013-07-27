@@ -42,4 +42,5 @@ def test_rand
   srand(10)
   p rand()
   p rand(100)
+  # p rand(100..200)
 end

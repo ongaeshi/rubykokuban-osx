@@ -23,10 +23,10 @@ namespace {
     {
         mrb_float max;
     
-        if (mrb_get_args(mrb, "|f", &max) == 0) {
-            return mrb_float_value(mrb, ofRandomuf());
-        } else {
+        if (mrb_get_args(mrb, "|f", &max) == 1) {
             return mrb_float_value(mrb, ofRandom(max));
+        } else {
+            return mrb_float_value(mrb, ofRandomuf());
         }
     }
 }
