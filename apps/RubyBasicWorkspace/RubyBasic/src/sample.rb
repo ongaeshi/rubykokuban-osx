@@ -8,6 +8,9 @@ def setup
 
   @y = RADIUS
   @speed = SPEED
+
+  p rand()
+  p rand(100)
 end
 
 def update
