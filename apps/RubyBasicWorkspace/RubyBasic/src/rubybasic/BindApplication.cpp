@@ -5,11 +5,7 @@
 #include "ofAppRunner.h"
 
 namespace {
-    static mrb_value get_frame_rate(mrb_state *mrb, mrb_value self)
-    {
-        return mrb_float_value(mrb, ofGetFrameRate());
-    }
-
+    static float get_frame_rate() { return ofGetFrameRate(); }
     static void set_window_pos(int x, int y) { ofSetWindowPosition(x, y); }
     static void set_window_size(int width, int height) { ofSetWindowShape(width, height); }
     static int window_pos_x() { return ofGetWindowPositionX(); }
@@ -23,7 +19,7 @@ void BindApplication::Bind(mrb_state* mrb)
 {
     mrubybind::MrubyBind b(mrb);
 
-    mrb_define_method(mrb, mrb->kernel_module, "get_frame_rate", get_frame_rate, MRB_ARGS_REQ(0));
+    b.bind("get_frame_rate", get_frame_rate);
     b.bind("set_window_pos", set_window_pos);
     b.bind("set_window_size", set_window_size);
     b.bind("window_pos_x", window_pos_x);
