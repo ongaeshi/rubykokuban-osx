@@ -1,59 +1,3 @@
-module Console2
-  # FONT_HEIGHT = 13 # can't use CONSTANT at inner block
-  @font_height = 13 
-
-  def self.init(x, y, width, height)
-    @x = x
-    @y = y
-    @width = width
-    @height = height
-    @line_num = (height / @font_height).to_i
-    @text = []
-
-    # Override Kernel#p
-    Kernel.class_eval do
-      alias org_p p
-
-      def self.p(*args)
-        org_p(*args)
-        Console2.p(*args)
-      end
-    end
-  end
-
-  def self.p(*arg)
-    if arg.instance_of?(Array)
-      @text += arg.map{|obj| obj.inspect }
-    else
-      @text << arg.inspect
-    end
-    arg
-  end
-
-  def self.draw
-    return if @text.nil?
-    
-    @text = @text[@text.length - @line_num, @line_num] if @text.length > @line_num
-    
-    set_fill
-    set_color(255, 255, 255)
-    rect(@x, @y, @width, @height)
-
-    set_no_fill
-    set_color(0, 0, 0)
-    rect(@x, @y, @width, @height)
-
-    @text.each_with_index do |text, index|
-      text(text, @x + 5, @y + @font_height + @font_height * index)
-    end
-  end
-
-  def self.clear
-    return if @text.nil?
-    @text = []
-  end
-end
-
 RADIUS = 100
 SPEED  = 1
 
@@ -65,7 +9,7 @@ def setup
   @y = RADIUS
   @speed = SPEED
 
-  Console2.init(20, 260, 600, 200)
+  Console.init(20, 260, 600, 200)
 
   test_rand
 end
@@ -77,7 +21,7 @@ def update
   # p 1
   # p(nil)
   p("abcdeffgABCDEFG!#$%'&('&')()0(=)~|", @y, {a: 1, b: 2}) if Input.mouse_down?(0)
-  Console2.clear if Input.mouse_down?(2)
+  Console.clear if Input.mouse_down?(2)
 end
 
 def draw
@@ -98,7 +42,7 @@ def draw
   text(DebugInfo.mouse, 10, 45)
 
   # Console
-  Console2.draw
+  Console.draw
 end
 
 # ----------------------------------------------------------

@@ -34,21 +34,41 @@ module DebugInfo
 end
 
 module Console
-  def self.init(x, y, width = 600, height = 190, line_num = 13)
+  # FONT_HEIGHT = 13 # can't use CONSTANT at inner block
+  @font_height = 13 
+
+  def self.init(x, y, width = 600, height = 190)
     @x = x
     @y = y
     @width = width
     @height = height
-    @line_num = line_num
-    @text = ""
+    @line_num = (height / @font_height).to_i
+    @text = []
+
+    # Override Kernel#p
+    Kernel.class_eval do
+      alias org_p p
+
+      def self.p(*args)
+        org_p(*args)
+        Console.p(*args)
+      end
+    end
   end
 
-  def self.p(*args)
-    @text = args.map{|obj| obj.inspect }.join("\n") + "\n" + @text
+  def self.p(*arg)
+    if arg.instance_of?(Array)
+      @text += arg.map{|obj| obj.inspect }
+    else
+      @text << arg.inspect
+    end
+    arg
   end
 
   def self.draw
-    @text = @text.split("\n")[0, @line_num].join("\n")
+    return if @text.nil?
+    
+    @text = @text[@text.length - @line_num, @line_num] if @text.length > @line_num
     
     set_fill
     set_color(255, 255, 255)
@@ -58,6 +78,13 @@ module Console
     set_color(0, 0, 0)
     rect(@x, @y, @width, @height)
 
-    text(@text, @x + 10, @y + 20)
+    @text.each_with_index do |text, index|
+      text(text, @x + 5, @y + @font_height + @font_height * index)
+    end
+  end
+
+  def self.clear
+    return if @text.nil?
+    @text = []
   end
 end
