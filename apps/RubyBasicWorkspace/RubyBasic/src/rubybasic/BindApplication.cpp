@@ -10,8 +10,12 @@ namespace {
     static void set_window_size(int width, int height) { ofSetWindowShape(width, height); }
     static int window_pos_x() { return ofGetWindowPositionX(); }
     static int window_pos_y() { return ofGetWindowPositionY(); }
-    static int window_width() { return ofGetWidth(); }
-    static int window_height() { return ofGetHeight(); }
+    // static int window_width() { return ofGetWidth(); }
+    // static int window_height() { return ofGetHeight(); }
+    static int window_width() { return ofGetWindowWidth(); }
+    static int window_height() { return ofGetWindowHeight(); }
+    static int screen_width() { return ofGetScreenWidth(); }
+    static int screen_height() { return ofGetScreenHeight(); }
 }
 
 //--------------------------------------------------------------------------------
@@ -26,6 +30,8 @@ void BindApplication::Bind(mrb_state* mrb)
     b.bind("window_pos_y", window_pos_y);
     b.bind("window_width", window_width);
     b.bind("window_height", window_height);
+    b.bind("screen_width", screen_width);
+    b.bind("screen_height", screen_height);
 }
 
 //EOF
