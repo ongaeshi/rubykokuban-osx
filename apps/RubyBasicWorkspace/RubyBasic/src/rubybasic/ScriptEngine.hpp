@@ -17,6 +17,7 @@ public:
 
     // Create need function only
     void funcallIf(const char* aName);
+    void funcallIf(mrb_value aModule, const char* aName);
     void funcallIf(const char* aName, mrb_value aArg1, mrb_value aArg2);
     void funcallIf(const char* aName, mrb_value aArg1, mrb_value aArg2, mrb_value aArg3);
 
@@ -38,6 +39,7 @@ private:
     const char* mFilename;
     mrb_state*  mMrb;
     std::string mErrorMsg;
+    struct RClass* mConsoleModule;
 };
 
 }

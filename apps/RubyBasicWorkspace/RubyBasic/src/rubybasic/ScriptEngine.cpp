@@ -13,7 +13,7 @@
 
 namespace rubybasic {
 
-// BuiltIn Library
+// buitin.rb
 const uint8_t BuiltIn[] = {
 0x52,0x49,0x54,0x45,0x30,0x30,0x30,0x31,0x37,0xe7,0x00,0x00,0x09,0x69,0x4d,0x41,
 0x54,0x5a,0x30,0x30,0x30,0x30,0x49,0x52,0x45,0x50,0x00,0x00,0x09,0x4b,0x30,0x30,
@@ -173,6 +173,7 @@ ScriptEngine::ScriptEngine(const char* aFilename)
 : mFilename(aFilename)
 , mMrb(NULL)
 , mErrorMsg()
+, mConsoleModule(NULL)
 {
     open();
     load(mFilename);
@@ -189,6 +190,7 @@ void ScriptEngine::setup()
 {
     // lfoad
     mrb_load_irep(mMrb, BuiltIn);
+    mConsoleModule = mrb_class_get(mMrb, "Console");
     
     // bind
     BindApplication::Bind(mMrb);
@@ -202,9 +204,15 @@ void ScriptEngine::setup()
 //----------------------------------------------------------
 void ScriptEngine::funcallIf(const char* aName)
 {
+    funcallIf(kernel_obj(), aName);
+}
+
+//----------------------------------------------------------
+void ScriptEngine::funcallIf(mrb_value aModule, const char* aName)
+{
     if (mMrb && isExistFunction(kernel_obj(), aName)) {
         int ai = mrb_gc_arena_save(mMrb);
-        mrb_funcall(mMrb, kernel_obj(), aName, 0);
+        mrb_funcall(mMrb, aModule, aName, 0);
         mrb_gc_arena_restore(mMrb, ai);
         closeOnException();
     }
@@ -237,6 +245,7 @@ void ScriptEngine::draw()
 {
     if (mMrb) {
         funcallIf("draw");
+        funcallIf(mrb_obj_value(mConsoleModule), "draw");
     } else {
         ofSetColor(0, 0, 0);
         ofBackground(255, 255, 255);

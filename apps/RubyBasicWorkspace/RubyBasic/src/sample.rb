@@ -40,9 +40,6 @@ def draw
   text(DebugInfo.fps, 10, 15)
   text(DebugInfo.window, 10, 30)
   text(DebugInfo.mouse, 10, 45)
-
-  # Console
-  Console.draw
 end
 
 # ----------------------------------------------------------
