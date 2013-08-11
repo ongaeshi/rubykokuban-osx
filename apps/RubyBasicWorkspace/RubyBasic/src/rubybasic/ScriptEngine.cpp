@@ -204,13 +204,15 @@ void ScriptEngine::setup()
 //----------------------------------------------------------
 void ScriptEngine::funcallIf(const char* aName)
 {
-    funcallIf(kernel_obj(), aName);
+    if (mMrb) {
+      funcallIf(kernel_obj(), aName);
+    }
 }
 
 //----------------------------------------------------------
 void ScriptEngine::funcallIf(mrb_value aModule, const char* aName)
 {
-    if (mMrb && isExistFunction(kernel_obj(), aName)) {
+    if (mMrb && isExistFunction(aModule, aName)) {
         int ai = mrb_gc_arena_save(mMrb);
         mrb_funcall(mMrb, aModule, aName, 0);
         mrb_gc_arena_restore(mMrb, ai);
@@ -246,6 +248,7 @@ void ScriptEngine::draw()
     if (mMrb) {
         funcallIf("draw");
         funcallIf(mrb_obj_value(mConsoleModule), "draw");
+        
     } else {
         ofSetColor(0, 0, 0);
         ofBackground(255, 255, 255);
