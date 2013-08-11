@@ -16,9 +16,9 @@ public:
     void setup();
 
     // Create need function only
-    mrb_value funcallIf(const char* aName);
-    mrb_value funcallIf(const char* aName, mrb_value aArg1, mrb_value aArg2);
-    mrb_value funcallIf(const char* aName, mrb_value aArg1, mrb_value aArg2, mrb_value aArg3);
+    void funcallIf(const char* aName);
+    void funcallIf(const char* aName, mrb_value aArg1, mrb_value aArg2);
+    void funcallIf(const char* aName, mrb_value aArg1, mrb_value aArg2, mrb_value aArg3);
 
     void draw();
     void reload();
