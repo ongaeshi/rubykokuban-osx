@@ -12,8 +12,13 @@ module Console2
     # p @line_num
   end
 
-  def self.p(*args)
-    @text += args.map{|obj| obj.inspect }
+  def self.p(*arg)
+    if arg.instance_of?(Array)
+      @text += arg.map{|obj| obj.inspect }
+    else
+      @text << arg.inspect
+    end
+    arg
   end
 
   def self.draw
@@ -37,16 +42,20 @@ module Console2
   end
 end
 
-# module Kernel
-#   def p(*args)
-#     Console2.p(*args)
-#   end
-# end
+module Kernel
+  alias org_p p
+
+  def self.p(*args)
+    org_p(*args)
+    Console2.p(*args)
+  end
+end
 
 RADIUS = 100
 SPEED  = 1
 
 def setup
+
   set_window_size(640, 480)
   # set_window_pos(0, 0)
   set_background(255, 255, 255)
@@ -54,16 +63,18 @@ def setup
   @y = RADIUS
   @speed = SPEED
 
-  test_rand
-
   Console2.init(20, 0, 600, 400)
+
+  test_rand
 end
 
 def update
   @y += @speed
   @speed *= -1.0 if @y > 480 - RADIUS || @y < RADIUS
 
-  Console2.p("abcdeffgABCDEFG!#$%'&('&')()0(=)~|", @y, {a: 1, b: 2}) if Input.mouse_down?(0)
+  p 1
+  p(nil)
+  p("abcdeffgABCDEFG!#$%'&('&')()0(=)~|", @y, {a: 1, b: 2}) if Input.mouse_down?(0)
   Console2.clear if Input.mouse_down?(2)
 end
 
@@ -93,7 +104,9 @@ end
 def test_rand
   srand
   srand(10)
-  p rand()
-  p rand(100)
+  # p rand()
+  p rand(100).inspect
+  Console2.p rand(100).inspect
+  # Console2.p(rand(100).inspect)
   # p rand(100..200)
 end
