@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		521F408417A3B3DC003CF149 /* BindMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521F408217A3B3DC003CF149 /* BindMath.cpp */; };
+		526368B217DACA500097EC94 /* BindApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526368A417DACA500097EC94 /* BindApplication.cpp */; };
+		526368B317DACA500097EC94 /* BindGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526368A617DACA500097EC94 /* BindGraphics.cpp */; };
+		526368B417DACA500097EC94 /* BindInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526368A817DACA500097EC94 /* BindInput.cpp */; };
+		526368B517DACA500097EC94 /* BindMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526368AA17DACA500097EC94 /* BindMath.cpp */; };
+		526368B617DACA500097EC94 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526368AC17DACA500097EC94 /* Input.cpp */; };
+		526368B717DACA500097EC94 /* Mouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526368AE17DACA500097EC94 /* Mouse.cpp */; };
+		526368B817DACA500097EC94 /* ScriptEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526368B017DACA500097EC94 /* ScriptEngine.cpp */; };
 		527E661B17943D01003F07E5 /* libmruby.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 527E660817943D01003F07E5 /* libmruby.a */; };
 		527E6638179440C8003F07E5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E662D179440C8003F07E5 /* main.cpp */; };
 		527E663B179440C8003F07E5 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E6632179440C8003F07E5 /* testApp.cpp */; };
-		527E664917944142003F07E5 /* BindApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E663D17944142003F07E5 /* BindApplication.cpp */; };
-		527E664A17944142003F07E5 /* BindGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E663F17944142003F07E5 /* BindGraphics.cpp */; };
-		527E664B17944142003F07E5 /* BindInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E664117944142003F07E5 /* BindInput.cpp */; };
-		527E664C17944142003F07E5 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E664317944142003F07E5 /* Input.cpp */; };
-		527E664D17944142003F07E5 /* Mouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E664517944142003F07E5 /* Mouse.cpp */; };
-		527E664E17944142003F07E5 /* ScriptEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E664717944142003F07E5 /* ScriptEngine.cpp */; };
 		527E66551795A044003F07E5 /* mrubybind.cc in Sources */ = {isa = PBXBuildFile; fileRef = 527E66501795A044003F07E5 /* mrubybind.cc */; };
 		527E66561795A044003F07E5 /* mrubybind.inc in Sources */ = {isa = PBXBuildFile; fileRef = 527E66531795A044003F07E5 /* mrubybind.inc */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -70,8 +70,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		521F408217A3B3DC003CF149 /* BindMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindMath.cpp; sourceTree = "<group>"; };
-		521F408317A3B3DC003CF149 /* BindMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindMath.hpp; sourceTree = "<group>"; };
+		526368A417DACA500097EC94 /* BindApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindApplication.cpp; sourceTree = "<group>"; };
+		526368A517DACA500097EC94 /* BindApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindApplication.hpp; sourceTree = "<group>"; };
+		526368A617DACA500097EC94 /* BindGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindGraphics.cpp; sourceTree = "<group>"; };
+		526368A717DACA500097EC94 /* BindGraphics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindGraphics.hpp; sourceTree = "<group>"; };
+		526368A817DACA500097EC94 /* BindInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindInput.cpp; sourceTree = "<group>"; };
+		526368A917DACA500097EC94 /* BindInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindInput.hpp; sourceTree = "<group>"; };
+		526368AA17DACA500097EC94 /* BindMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindMath.cpp; sourceTree = "<group>"; };
+		526368AB17DACA500097EC94 /* BindMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindMath.hpp; sourceTree = "<group>"; };
+		526368AC17DACA500097EC94 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
+		526368AD17DACA500097EC94 /* Input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
+		526368AE17DACA500097EC94 /* Mouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mouse.cpp; sourceTree = "<group>"; };
+		526368AF17DACA500097EC94 /* Mouse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mouse.hpp; sourceTree = "<group>"; };
+		526368B017DACA500097EC94 /* ScriptEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptEngine.cpp; sourceTree = "<group>"; };
+		526368B117DACA500097EC94 /* ScriptEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScriptEngine.hpp; sourceTree = "<group>"; };
 		527E660817943D01003F07E5 /* libmruby.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmruby.a; sourceTree = "<group>"; };
 		527E660917943D01003F07E5 /* mrbconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mrbconf.h; sourceTree = "<group>"; };
 		527E660B17943D01003F07E5 /* array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = array.h; sourceTree = "<group>"; };
@@ -92,18 +104,6 @@
 		527E662D179440C8003F07E5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		527E6632179440C8003F07E5 /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
 		527E6633179440C8003F07E5 /* testApp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = testApp.hpp; sourceTree = "<group>"; };
-		527E663D17944142003F07E5 /* BindApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindApplication.cpp; sourceTree = "<group>"; };
-		527E663E17944142003F07E5 /* BindApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindApplication.hpp; sourceTree = "<group>"; };
-		527E663F17944142003F07E5 /* BindGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindGraphics.cpp; sourceTree = "<group>"; };
-		527E664017944142003F07E5 /* BindGraphics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindGraphics.hpp; sourceTree = "<group>"; };
-		527E664117944142003F07E5 /* BindInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindInput.cpp; sourceTree = "<group>"; };
-		527E664217944142003F07E5 /* BindInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindInput.hpp; sourceTree = "<group>"; };
-		527E664317944142003F07E5 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
-		527E664417944142003F07E5 /* Input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
-		527E664517944142003F07E5 /* Mouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mouse.cpp; sourceTree = "<group>"; };
-		527E664617944142003F07E5 /* Mouse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mouse.hpp; sourceTree = "<group>"; };
-		527E664717944142003F07E5 /* ScriptEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptEngine.cpp; sourceTree = "<group>"; };
-		527E664817944142003F07E5 /* ScriptEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScriptEngine.hpp; sourceTree = "<group>"; };
 		527E66501795A044003F07E5 /* mrubybind.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mrubybind.cc; sourceTree = "<group>"; };
 		527E66511795A044003F07E5 /* mrubybind.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mrubybind.dat; sourceTree = "<group>"; };
 		527E66521795A044003F07E5 /* mrubybind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mrubybind.h; sourceTree = "<group>"; };
@@ -161,6 +161,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		526368A317DACA500097EC94 /* rubykokuban */ = {
+			isa = PBXGroup;
+			children = (
+				526368A417DACA500097EC94 /* BindApplication.cpp */,
+				526368A517DACA500097EC94 /* BindApplication.hpp */,
+				526368A617DACA500097EC94 /* BindGraphics.cpp */,
+				526368A717DACA500097EC94 /* BindGraphics.hpp */,
+				526368A817DACA500097EC94 /* BindInput.cpp */,
+				526368A917DACA500097EC94 /* BindInput.hpp */,
+				526368AA17DACA500097EC94 /* BindMath.cpp */,
+				526368AB17DACA500097EC94 /* BindMath.hpp */,
+				526368AC17DACA500097EC94 /* Input.cpp */,
+				526368AD17DACA500097EC94 /* Input.hpp */,
+				526368AE17DACA500097EC94 /* Mouse.cpp */,
+				526368AF17DACA500097EC94 /* Mouse.hpp */,
+				526368B017DACA500097EC94 /* ScriptEngine.cpp */,
+				526368B117DACA500097EC94 /* ScriptEngine.hpp */,
+			);
+			path = rubykokuban;
+			sourceTree = "<group>";
+		};
 		527E660717943D01003F07E5 /* mruby */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,27 +212,6 @@
 				527E661917943D01003F07E5 /* variable.h */,
 			);
 			path = mruby;
-			sourceTree = "<group>";
-		};
-		527E663C17944142003F07E5 /* rubybasic */ = {
-			isa = PBXGroup;
-			children = (
-				521F408217A3B3DC003CF149 /* BindMath.cpp */,
-				521F408317A3B3DC003CF149 /* BindMath.hpp */,
-				527E663D17944142003F07E5 /* BindApplication.cpp */,
-				527E663E17944142003F07E5 /* BindApplication.hpp */,
-				527E663F17944142003F07E5 /* BindGraphics.cpp */,
-				527E664017944142003F07E5 /* BindGraphics.hpp */,
-				527E664117944142003F07E5 /* BindInput.cpp */,
-				527E664217944142003F07E5 /* BindInput.hpp */,
-				527E664317944142003F07E5 /* Input.cpp */,
-				527E664417944142003F07E5 /* Input.hpp */,
-				527E664517944142003F07E5 /* Mouse.cpp */,
-				527E664617944142003F07E5 /* Mouse.hpp */,
-				527E664717944142003F07E5 /* ScriptEngine.cpp */,
-				527E664817944142003F07E5 /* ScriptEngine.hpp */,
-			);
-			path = rubybasic;
 			sourceTree = "<group>";
 		};
 		527E664F1795A044003F07E5 /* mrubybind */ = {
@@ -302,7 +302,7 @@
 				527E6633179440C8003F07E5 /* testApp.hpp */,
 				527E664F1795A044003F07E5 /* mrubybind */,
 				527E660717943D01003F07E5 /* mruby */,
-				527E663C17944142003F07E5 /* rubybasic */,
+				526368A317DACA500097EC94 /* rubykokuban */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -405,15 +405,15 @@
 			files = (
 				527E6638179440C8003F07E5 /* main.cpp in Sources */,
 				527E663B179440C8003F07E5 /* testApp.cpp in Sources */,
-				527E664917944142003F07E5 /* BindApplication.cpp in Sources */,
-				527E664A17944142003F07E5 /* BindGraphics.cpp in Sources */,
-				527E664B17944142003F07E5 /* BindInput.cpp in Sources */,
-				527E664C17944142003F07E5 /* Input.cpp in Sources */,
-				527E664D17944142003F07E5 /* Mouse.cpp in Sources */,
-				527E664E17944142003F07E5 /* ScriptEngine.cpp in Sources */,
 				527E66551795A044003F07E5 /* mrubybind.cc in Sources */,
 				527E66561795A044003F07E5 /* mrubybind.inc in Sources */,
-				521F408417A3B3DC003CF149 /* BindMath.cpp in Sources */,
+				526368B217DACA500097EC94 /* BindApplication.cpp in Sources */,
+				526368B317DACA500097EC94 /* BindGraphics.cpp in Sources */,
+				526368B417DACA500097EC94 /* BindInput.cpp in Sources */,
+				526368B517DACA500097EC94 /* BindMath.cpp in Sources */,
+				526368B617DACA500097EC94 /* Input.cpp in Sources */,
+				526368B717DACA500097EC94 /* Mouse.cpp in Sources */,
+				526368B817DACA500097EC94 /* ScriptEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

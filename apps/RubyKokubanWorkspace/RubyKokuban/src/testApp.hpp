@@ -1,8 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
-#include "rubybasic/ScriptEngine.hpp"
-#include "rubybasic/Input.hpp"
+#include "rubykokuban/ScriptEngine.hpp"
+#include "rubykokuban/Input.hpp"
 
 struct mrb_state;
 
@@ -26,8 +26,8 @@ public:
     void gotMessage(ofMessage msg);
 
 private:
-    rubybasic::Input        mInput;
-    rubybasic::ScriptEngine mScriptEngine;
+    rubykokuban::Input        mInput;
+    rubykokuban::ScriptEngine mScriptEngine;
 };
 
 //EOF

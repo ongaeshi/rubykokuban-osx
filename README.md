@@ -1,4 +1,4 @@
-# rubybasic-osx
+# rubykokuban-osx
 
-OSX implementation of [RubyBasic](https://github.com/ongaeshi/rubybasic-gem)
+OSX implementation of [RubyKokuban](https://github.com/ongaeshi/rubykokuban-gem)
 

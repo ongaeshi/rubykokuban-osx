@@ -1,13 +1,13 @@
 #pragma once
 
-namespace rubybasic {
+namespace rubykokuban {
     class Input;
 }
 
 struct mrb_state;
 
 //--------------------------------------------------------------------------------
-namespace rubybasic {
+namespace rubykokuban {
 class BindInput {
 public:
     static void Setup(Input& aInput);

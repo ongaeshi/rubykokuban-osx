@@ -1,10 +1,10 @@
-#include "rubybasic/BindInput.hpp"
+#include "rubykokuban/BindInput.hpp"
 
-#include "rubybasic/Input.hpp"
+#include "rubykokuban/Input.hpp"
 #include "mruby.h"
 #include "ofAppRunner.h"
 
-namespace rubybasic {
+namespace rubykokuban {
 namespace {
     Input* sInput = NULL;
 

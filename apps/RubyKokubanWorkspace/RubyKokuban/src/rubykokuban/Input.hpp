@@ -1,9 +1,9 @@
 #pragma once
 
-#include "rubybasic/Mouse.hpp"
+#include "rubykokuban/Mouse.hpp"
 
 //------------------------------------------------------------
-namespace rubybasic {
+namespace rubykokuban {
 class Input {
 public:
     Input();

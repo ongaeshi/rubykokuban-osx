@@ -1,13 +1,13 @@
 #include "testApp.hpp"
 
-#include "rubybasic/BindInput.hpp"
+#include "rubykokuban/BindInput.hpp"
 
 //--------------------------------------------------------------
 testApp::testApp(const char* aFilename)
 : mInput()
 , mScriptEngine(aFilename)
 {
-    rubybasic::BindInput::Setup(mInput);
+    rubykokuban::BindInput::Setup(mInput);
 }
 
 //--------------------------------------------------------------

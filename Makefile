@@ -1,7 +1,7 @@
-MRUBY    = ../rubybasic-mruby
+MRUBY    = ../rubykokuban-mruby
 HEADER   = $(MRUBY)/include
 LIBMRUBY = $(MRUBY)/build/osx/lib/libmruby.a
-SRC      = ./apps/RubyBasicWorkspace/RubyBasic/src/mruby
+SRC      = ./apps/RubyKokubanWorkspace/RubyKokuban/src/mruby
 
 update-mruby:
 	mkdir -p $(SRC) $(SRC)/mruby

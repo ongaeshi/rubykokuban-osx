@@ -1,4 +1,4 @@
-#include "rubybasic/BindApplication.hpp"
+#include "rubykokuban/BindApplication.hpp"
 
 #include "mruby.h"
 #include "mrubybind.h"

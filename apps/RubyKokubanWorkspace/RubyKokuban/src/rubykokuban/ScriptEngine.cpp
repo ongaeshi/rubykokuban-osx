@@ -1,4 +1,4 @@
-#include "rubybasic/ScriptEngine.hpp"
+#include "rubykokuban/ScriptEngine.hpp"
 
 #include "mruby.h"
 #include "mruby/class.h"
@@ -6,12 +6,12 @@
 #include "mruby/irep.h"
 #include "mruby/string.h"
 #include "ofMain.h"
-#include "rubybasic/BindApplication.hpp"
-#include "rubybasic/BindGraphics.hpp"
-#include "rubybasic/BindInput.hpp"
+#include "rubykokuban/BindApplication.hpp"
+#include "rubykokuban/BindGraphics.hpp"
+#include "rubykokuban/BindInput.hpp"
 #include <stdint.h>
 
-namespace rubybasic {
+namespace rubykokuban {
 
 // buitin.rb
 const uint8_t BuiltIn[] = {

@@ -1,6 +1,6 @@
-#include "rubybasic/Mouse.hpp"
+#include "rubykokuban/Mouse.hpp"
 
-namespace rubybasic {
+namespace rubykokuban {
 //------------------------------------------------------------
 Mouse::Mouse()
 : mInternal()

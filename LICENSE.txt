@@ -1,5 +1,5 @@
 =================
-rubybasic-osx
+rubykokuban-osx
 =================
 
 Copyright (c) 2013 ongaeshi

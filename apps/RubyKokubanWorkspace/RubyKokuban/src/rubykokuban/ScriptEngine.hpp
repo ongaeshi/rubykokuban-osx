@@ -4,7 +4,7 @@
 #include <string>
 
 //----------------------------------------------------------
-namespace rubybasic {
+namespace rubykokuban {
 
 class ScriptEngine {
 public:

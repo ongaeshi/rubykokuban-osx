@@ -1,7 +1,7 @@
 #pragma once
 
 //------------------------------------------------------------
-namespace rubybasic {
+namespace rubykokuban {
 class Mouse {
 public:
     enum ButtonCode {

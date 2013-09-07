@@ -1,6 +1,6 @@
-#include "rubybasic/Input.hpp"
+#include "rubykokuban/Input.hpp"
 
-namespace rubybasic {
+namespace rubykokuban {
 //------------------------------------------------------------
 Input::Input()
 : mMouse()

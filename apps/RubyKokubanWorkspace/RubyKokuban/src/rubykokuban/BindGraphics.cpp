@@ -1,4 +1,4 @@
-#include "rubybasic/BindGraphics.hpp"
+#include "rubykokuban/BindGraphics.hpp"
 
 #include "mruby.h"
 #include "mrubybind.h"
