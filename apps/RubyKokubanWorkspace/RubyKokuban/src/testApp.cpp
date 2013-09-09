@@ -16,6 +16,7 @@ void testApp::setup()
     // setup openFrameworks
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
+    ofEnableAlphaBlending();
     // ofBackground(255, 255, 255);
 
     // bind & call function
