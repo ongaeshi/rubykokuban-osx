@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5260CB8F17DE42FC00819B8A /* BindImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5260CB8D17DE42FC00819B8A /* BindImage.cpp */; };
 		526368B217DACA500097EC94 /* BindApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526368A417DACA500097EC94 /* BindApplication.cpp */; };
 		526368B317DACA500097EC94 /* BindGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526368A617DACA500097EC94 /* BindGraphics.cpp */; };
 		526368B417DACA500097EC94 /* BindInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 526368A817DACA500097EC94 /* BindInput.cpp */; };
@@ -70,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5260CB8D17DE42FC00819B8A /* BindImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindImage.cpp; sourceTree = "<group>"; };
+		5260CB8E17DE42FC00819B8A /* BindImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindImage.hpp; sourceTree = "<group>"; };
 		526368A417DACA500097EC94 /* BindApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindApplication.cpp; sourceTree = "<group>"; };
 		526368A517DACA500097EC94 /* BindApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindApplication.hpp; sourceTree = "<group>"; };
 		526368A617DACA500097EC94 /* BindGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindGraphics.cpp; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 		526368A317DACA500097EC94 /* rubykokuban */ = {
 			isa = PBXGroup;
 			children = (
+				5260CB8D17DE42FC00819B8A /* BindImage.cpp */,
+				5260CB8E17DE42FC00819B8A /* BindImage.hpp */,
 				526368A417DACA500097EC94 /* BindApplication.cpp */,
 				526368A517DACA500097EC94 /* BindApplication.hpp */,
 				526368A617DACA500097EC94 /* BindGraphics.cpp */,
@@ -414,6 +419,7 @@
 				526368B617DACA500097EC94 /* Input.cpp in Sources */,
 				526368B717DACA500097EC94 /* Mouse.cpp in Sources */,
 				526368B817DACA500097EC94 /* ScriptEngine.cpp in Sources */,
+				5260CB8F17DE42FC00819B8A /* BindImage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 #include "ofMain.h"
 #include "rubykokuban/BindApplication.hpp"
 #include "rubykokuban/BindGraphics.hpp"
+#include "rubykokuban/BindImage.hpp"
 #include "rubykokuban/BindInput.hpp"
 #include <stdint.h>
 
@@ -195,6 +196,7 @@ void ScriptEngine::setup()
     // bind
     BindApplication::Bind(mMrb);
     BindGraphics::Bind(mMrb);
+    BindImage::Bind(mMrb);
     BindInput::Bind(mMrb);
 
     // call setup

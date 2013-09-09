@@ -12,6 +12,8 @@ def setup
   Console.init(20, 260, 600, 200)
 
   test_rand
+
+  @image = Image.load
 end
 
 def update
@@ -34,6 +36,10 @@ def draw
   set_line_width(1)
   set_color(150, 195, 17)
   circle(150, @y, RADIUS)
+
+  # image
+  set_color(255, 255, 255)
+  @image.draw
 
   # debug info
   set_color(0, 0, 0)
