@@ -26,7 +26,6 @@ public:
     void gotMessage(ofMessage msg);
 
 private:
-    const char*               mRootDir;
     rubykokuban::Input        mInput;
     rubykokuban::ScriptEngine mScriptEngine;
 };

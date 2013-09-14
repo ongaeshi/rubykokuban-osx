@@ -4,9 +4,8 @@
 
 //--------------------------------------------------------------
 testApp::testApp(const char* aRootDir, const char* aScriptPath)
-: mRootDir(aRootDir)
-, mInput()
-, mScriptEngine(aScriptPath)
+: mInput()
+, mScriptEngine(aRootDir, aScriptPath)
 {
     rubykokuban::BindInput::Setup(mInput);
 }
@@ -14,9 +13,6 @@ testApp::testApp(const char* aRootDir, const char* aScriptPath)
 //--------------------------------------------------------------
 void testApp::setup()
 {
-    // set texture & script root path
-    ofSetDataPathRoot(mRootDir);
-
     // setup openFrameworks
     ofSetFrameRate(60);
     ofSetVerticalSync(true);

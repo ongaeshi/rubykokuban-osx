@@ -170,8 +170,9 @@ const uint8_t BuiltIn[] = {
 };
 
 //----------------------------------------------------------
-ScriptEngine::ScriptEngine(const char* aScriptPath)
-: mScriptPath(aScriptPath)
+ScriptEngine::ScriptEngine(const char* aRootDir, const char* aScriptPath)
+: mRootDir(aRootDir)
+, mScriptPath(aScriptPath)
 , mMrb(NULL)
 , mErrorMsg()
 , mConsoleModule(NULL)
@@ -187,6 +188,9 @@ ScriptEngine::~ScriptEngine()
 //----------------------------------------------------------
 void ScriptEngine::setup()
 {
+    // set texture & script root
+    ofSetDataPathRoot(mRootDir);
+
     // open mrb
     open();
     
