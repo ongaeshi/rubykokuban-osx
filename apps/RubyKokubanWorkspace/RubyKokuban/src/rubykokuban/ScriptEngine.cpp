@@ -170,14 +170,12 @@ const uint8_t BuiltIn[] = {
 };
 
 //----------------------------------------------------------
-ScriptEngine::ScriptEngine(const char* aFilename)
-: mFilename(aFilename)
+ScriptEngine::ScriptEngine(const char* aScriptPath)
+: mScriptPath(aScriptPath)
 , mMrb(NULL)
 , mErrorMsg()
 , mConsoleModule(NULL)
 {
-    open();
-    load(mFilename);
 }
 
 //----------------------------------------------------------
@@ -189,7 +187,10 @@ ScriptEngine::~ScriptEngine()
 //----------------------------------------------------------
 void ScriptEngine::setup()
 {
-    // lfoad
+    // open mrb
+    open();
+    
+    // load builtin library
     mrb_load_irep(mMrb, BuiltIn);
     mConsoleModule = mrb_class_get(mMrb, "Console");
     
@@ -198,6 +199,9 @@ void ScriptEngine::setup()
     BindGraphics::Bind(mMrb);
     BindImage::Bind(mMrb);
     BindInput::Bind(mMrb);
+
+    // load user script
+    load();
 
     // call setup
     funcallIf("setup");
@@ -261,21 +265,21 @@ void ScriptEngine::draw()
 //----------------------------------------------------------
 void ScriptEngine::reload()
 {
-    reopen();  // comment out?
-    load(mFilename);
     setup();
 }
 
 //----------------------------------------------------------
 void ScriptEngine::open()
 {
+    close();                            // close if still open.
     mMrb = mrb_open();
 }
 
 //----------------------------------------------------------
-void ScriptEngine::load(const char* aFilename)
+void ScriptEngine::load()
 {
-    FILE *fd = fopen(mFilename, "r");
+    // printf("mScriptPath: %s\n", ofToDataPath(mScriptPath).c_str());
+    FILE *fd = fopen(ofToDataPath(mScriptPath).c_str(), "r");
     mrb_load_file(mMrb, fd);
     fclose(fd);
 }
@@ -287,13 +291,6 @@ void ScriptEngine::close()
         mrb_close(mMrb);
         mMrb = NULL;
     }
-}
-
-//----------------------------------------------------------
-void ScriptEngine::reopen()
-{
-    close();
-    open();
 }
 
 //----------------------------------------------------------

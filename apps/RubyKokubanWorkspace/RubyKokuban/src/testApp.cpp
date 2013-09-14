@@ -3,9 +3,10 @@
 #include "rubykokuban/BindInput.hpp"
 
 //--------------------------------------------------------------
-testApp::testApp(const char* aFilename)
-: mInput()
-, mScriptEngine(aFilename)
+testApp::testApp(const char* aRootDir, const char* aScriptPath)
+: mRootDir(aRootDir)
+, mInput()
+, mScriptEngine(aScriptPath)
 {
     rubykokuban::BindInput::Setup(mInput);
 }
@@ -13,6 +14,9 @@ testApp::testApp(const char* aFilename)
 //--------------------------------------------------------------
 void testApp::setup()
 {
+    // set texture & script root path
+    ofSetDataPathRoot(mRootDir);
+
     // setup openFrameworks
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
@@ -34,13 +38,15 @@ void testApp::update()
 void testApp::draw()
 {
     mScriptEngine.draw();
+    ofSetColor(255, 255, 255);
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key)
 {
-    if (key == 18) // Ctrl+R
+    if (key == 18) { // Ctrl+R
         mScriptEngine.reload();
+    }
 
     // cout << "keyPressed " << key << endl;
 }

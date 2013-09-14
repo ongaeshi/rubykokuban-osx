@@ -9,7 +9,7 @@ struct mrb_state;
 //--------------------------------------------------------------------------------
 class testApp : public ofBaseApp {
 public:
-    testApp(const char* aFilename);
+    testApp(const char* aRootDir, const char* aScriptPath);
 
     void setup();
     void update();
@@ -26,6 +26,7 @@ public:
     void gotMessage(ofMessage msg);
 
 private:
+    const char*               mRootDir;
     rubykokuban::Input        mInput;
     rubykokuban::ScriptEngine mScriptEngine;
 };

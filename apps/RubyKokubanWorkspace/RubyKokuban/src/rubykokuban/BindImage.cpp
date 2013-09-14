@@ -20,7 +20,7 @@ struct mrb_data_type data_type = { "rubykokuban_image", free };
 mrb_value load(mrb_state *mrb, mrb_value self)
 {
     ofImage* obj = new ofImage();
-    obj->loadImage("a.png");
+    obj->loadImage("../bin/data/a.png");
     // error handling ...
     struct RData *data = mrb_data_object_alloc(mrb, mrb_class_ptr(self), obj, &data_type);
     return mrb_obj_value(data);

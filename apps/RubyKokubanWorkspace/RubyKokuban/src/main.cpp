@@ -13,21 +13,22 @@ namespace {
 //--------------------------------------------------------------
 int main(int argc, const char* argv[])
 {
-#if 0
-    printf("argc: %d\n", argc);
+    // printf("argc: %d\n", argc);
+    // for (int i = 0; i < argc; ++i) {
+    //     printf("argv[%d]: \"%s\"\n", i, argv[i]);
+    // }
 
-    for (int i = 0; i < argc; ++i) {
-        printf("argv[%d]: \"%s\"\n", i, argv[i]);
+    const char* rootDir    = argv[1];
+    const char* scriptPath = argv[2];
+
+    if (isDebugMode(argc, argv)) {
+        rootDir    = "/Users/ongaeshi/Documents/rubykokuban-osx/apps/RubyKokubanWorkspace/RubyKokuban/src/"; // dirty code
+        scriptPath = "sample.rb";
     }
-#endif
 
-    const char* filename = argv[1];
+    // printf("rootDir: %s, scriptPath: %s\n", rootDir, scriptPath);
 
-    if (isDebugMode(argc, argv))
-        filename = "../src/sample.rb";
-
-    ofAppGlutWindow window; // create a window
-    // set width, height, mode (OF_WINDOW or OF_FULLSCREEN)
-    ofSetupOpenGL(&window, 1024, 768, OF_WINDOW);
-    ofRunApp(new testApp(filename)); // start the app
+    ofAppGlutWindow window;                       // create a window
+    ofSetupOpenGL(&window, 1024, 768, OF_WINDOW); // set width, height, mode (OF_WINDOW or OF_FULLSCREEN)
+    ofRunApp(new testApp(rootDir, scriptPath));   // start the app
 }
