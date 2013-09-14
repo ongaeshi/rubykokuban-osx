@@ -6,6 +6,9 @@ def setup
   # set_window_pos(0, 0)
   set_background(255, 255, 255)
 
+  @x = 0
+  @xspeed = SPEED * 2
+
   @y = RADIUS
   @speed = SPEED
 
@@ -13,12 +16,17 @@ def setup
 
   test_rand
 
-  @image = Image.load
+  @image  = Image.load("sample.png")
+  @image2 = Image.load("sample.png")
 end
 
 def update
+  @x += @xspeed
+  @xspeed *= -1.0 if @x > 640 - 64 || @x < 0
+
   @y += @speed
   @speed *= -1.0 if @y > 480 - RADIUS || @y < RADIUS
+
 
   # p 1
   # p(nil)
@@ -39,7 +47,10 @@ def draw
 
   # image
   set_color(255, 255, 255)
-  @image.draw
+  @image.draw(@x, 100)
+
+  set_color(128, 255, 128)
+  @image2.draw(@x + 50, 200)
 
   # debug info
   set_color(0, 0, 0)
