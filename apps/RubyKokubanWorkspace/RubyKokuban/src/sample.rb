@@ -3,7 +3,7 @@ def setup
   # set_window_pos(0, 0)
   set_background(255, 255, 255)
 
-  @image = Image.load("sample.png")
+  @image  = Image.load("sample.png")
   @image2 = Image.load("sample.png")
 end
 
@@ -13,51 +13,59 @@ def update
 end
 
 def draw
-  # image
-  description("normal", 0, 100)
+  # Draw image
+  x = 10; y = 100
+  description("draw(x, y)", x, y)
   set_color(255, 255, 255)
-  @image.draw(0, 100)
+  @image.draw(x, y)
 
-  description("blend color", 100, 100)
+  x = 110; y = 100
+  description("blend color", x, y)
   set_color(128, 255, 128)
-  @image2.draw(100, 100)
+  @image2.draw(x, y)
 
-  description("resize", 200, 100)
+  x = 210; y = 100
+  description("resize", x, y)
   set_color(255, 255, 255)
-  @resize_image = Image.load("sample.png").resize(40, 40) unless @resize_image
-  @resize_image.draw(200, 100)
+  @resize_image = @image.clone.resize(40, 40) unless @resize_image
+  @resize_image.draw(x, y)
 
-  description "crop!", 300, 100
+  x = 310; y = 100
+  description "crop!", x, y
   set_color(255, 255, 255)
-  @crop_bang_image = Image.load("sample.png").crop!(10, 10, 30, 30) unless @crop_bang_image
-  @crop_bang_image.draw(300, 100)
+  @crop_bang_image = @image.clone.crop!(10, 10, 30, 30) unless @crop_bang_image
+  @crop_bang_image.draw(x, y)
 
-  description "crop", 400, 100
+  x = 410; y = 100
+  description "crop", x, y
   set_color(255, 255, 255)
   @crop_image = @image.crop(10, 10, 30, 30) unless @crop_image
-  @crop_image.draw(400, 100)
+  @crop_image.draw(x, y)
 
-  description("rotate90", 500, 100)
+  x = 510; y = 100
+  description("rotate90", x, y)
   set_color(255, 255, 255)
-  @rotate_image = Image.load("sample.png").rotate90 unless @rotate_image
-  @rotate_image.draw(500, 100)
+  @rotate_image = @image.clone.rotate90 unless @rotate_image
+  @rotate_image.draw(x, y)
 
-  description("mirror", 0, 200)
+  x = 10; y = 200
+  description("mirror", x, y)
   set_color(255, 255, 255)
-  @mirror_image = Image.load("sample.png").mirror(false, true) unless @mirror_image
-  @mirror_image.draw(0, 200)
+  @mirror_image = @image.clone.mirror(false, true) unless @mirror_image
+  @mirror_image.draw(x, y)
 
-  description("clone", 100, 200)
+  x = 110; y = 200
+  description("clone", x, y)
   set_color(255, 255, 255)
   @clone_image = @mirror_image.clone.resize(80, 64) unless @clone_image
-  @clone_image.draw(100, 200)
+  @clone_image.draw(x, y)
 
   x = 200; y = 200
   description("draw(x,y,w,h)", x, y)
   set_color(255, 255, 255)
   @image.draw(x, y, 80, 80)
 
-  x = 330; y = 200
+  x = 340; y = 200
   description("draw_sub", x, y)
   set_color(255, 255, 255)
   @image.draw_sub(x + 32, y,      32, 32,  0,  0)
@@ -65,7 +73,7 @@ def draw
   @image.draw_sub(x,      y + 32, 32, 32,  0, 32)
   @image.draw_sub(x,      y,      32, 32, 32, 32)
 
-  x = 430; y = 200
+  x = 440; y = 200
   description("draw_sub2", x, y)
   set_color(255, 255, 255)
   @image.draw_sub(x + 32, y,      32, 32,  0,  0, 12, 12)
@@ -76,9 +84,7 @@ def draw
   # debug info
   set_color(0, 0, 0)
   text(DebugInfo.fps, 10, 15)
-  text(DebugInfo.window, 10, 30)
-  text(DebugInfo.mouse, 10, 45)
-  text("width: #{@image.width}, height: #{@image.height}", 10, 70)
+  text("width: #{@image.width}, height: #{@image.height}", 10, 50)
 end
 
 # ----------------------------------------------------------
