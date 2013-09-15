@@ -74,6 +74,11 @@ mrb_value set_image_type(mrb_state *mrb, mrb_value self)
 
 mrb_value crop_bang(mrb_state *mrb, mrb_value self)
 {
+    mrb_int x, y, w, h;
+    mrb_get_args(mrb, "iiii", &x, &y, &w, &h);
+    
+    obj(self).crop(x, y, w, h);
+
     return mrb_nil_value();
 }
 
