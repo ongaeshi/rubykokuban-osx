@@ -25,24 +25,45 @@ def draw
   @image2.draw(x, y)
 
   x = 210; y = 100
+  description("draw(x,y,w,h)", x, y)
+  set_color(255, 255, 255)
+  @image.draw(x, y, 80, 80)
+
+  x = 330; y = 100
+  description("draw_sub", x, y)
+  set_color(255, 255, 255)
+  @image.draw_sub(x + 32, y,      32, 32,  0,  0)
+  @image.draw_sub(x + 32, y + 32, 32, 32, 32,  0)
+  @image.draw_sub(x,      y + 32, 32, 32,  0, 32)
+  @image.draw_sub(x,      y,      32, 32, 32, 32)
+
+  x = 430; y = 100
+  description("draw_sub2", x, y)
+  set_color(255, 255, 255)
+  @image.draw_sub(x + 32, y,      32, 32,  0,  0, 12, 12)
+  @image.draw_sub(x + 32, y + 32, 32, 32, 32,  0, 12, 12)
+  @image.draw_sub(x,      y + 32, 32, 32,  0, 32, 12, 12)
+  @image.draw_sub(x,      y,      32, 32, 32, 32, 12, 12)
+
+  x = 210; y = 200
   description("resize", x, y)
   set_color(255, 255, 255)
   @resize_image = @image.clone.resize(40, 40) unless @resize_image
   @resize_image.draw(x, y)
 
-  x = 310; y = 100
+  x = 310; y = 200
   description "crop!", x, y
   set_color(255, 255, 255)
   @crop_bang_image = @image.clone.crop!(10, 10, 30, 30) unless @crop_bang_image
   @crop_bang_image.draw(x, y)
 
-  x = 410; y = 100
+  x = 410; y = 200
   description "crop", x, y
   set_color(255, 255, 255)
   @crop_image = @image.crop(10, 10, 30, 30) unless @crop_image
   @crop_image.draw(x, y)
 
-  x = 510; y = 100
+  x = 510; y = 200
   description("rotate90", x, y)
   set_color(255, 255, 255)
   @rotate_image = @image.clone.rotate90 unless @rotate_image
@@ -59,27 +80,6 @@ def draw
   set_color(255, 255, 255)
   @clone_image = @mirror_image.clone.resize(80, 64) unless @clone_image
   @clone_image.draw(x, y)
-
-  x = 200; y = 200
-  description("draw(x,y,w,h)", x, y)
-  set_color(255, 255, 255)
-  @image.draw(x, y, 80, 80)
-
-  x = 340; y = 200
-  description("draw_sub", x, y)
-  set_color(255, 255, 255)
-  @image.draw_sub(x + 32, y,      32, 32,  0,  0)
-  @image.draw_sub(x + 32, y + 32, 32, 32, 32,  0)
-  @image.draw_sub(x,      y + 32, 32, 32,  0, 32)
-  @image.draw_sub(x,      y,      32, 32, 32, 32)
-
-  x = 440; y = 200
-  description("draw_sub2", x, y)
-  set_color(255, 255, 255)
-  @image.draw_sub(x + 32, y,      32, 32,  0,  0, 12, 12)
-  @image.draw_sub(x + 32, y + 32, 32, 32, 32,  0, 12, 12)
-  @image.draw_sub(x,      y + 32, 32, 32,  0, 32, 12, 12)
-  @image.draw_sub(x,      y,      32, 32, 32, 32, 12, 12)
 
   # debug info
   set_color(0, 0, 0)
