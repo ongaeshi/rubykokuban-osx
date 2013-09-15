@@ -9,6 +9,11 @@
 namespace rubykokuban {
 
 namespace {
+ofImage& obj(mrb_value self)
+{
+    return *((ofImage*)DATA_PTR(self));
+}
+
 void free(mrb_state *mrb, void *p)
 {
     if (p) {
@@ -107,8 +112,7 @@ mrb_value draw(mrb_state *mrb, mrb_value self)
     mrb_int x, y;
     mrb_get_args(mrb, "ii", &x, &y);
     
-    ofImage* obj = (ofImage*)DATA_PTR(self);
-    obj->draw(x, y);
+    obj(self).draw(x, y);
 
     return mrb_nil_value();
 }
