@@ -42,6 +42,16 @@ mrb_value grab_screen(mrb_state *mrb, mrb_value self)
     return mrb_nil_value();
 }
 
+mrb_value clone(mrb_state *mrb, mrb_value self)
+{
+    ofImage* newObj = new ofImage();
+
+    newObj->clone(obj(self));
+
+    struct RData *data = mrb_data_object_alloc(mrb, mrb_obj_class(mrb, self), newObj, &data_type);
+    return mrb_obj_value(data);
+}
+
 mrb_value save(mrb_state *mrb, mrb_value self)
 {
     return mrb_nil_value();
@@ -108,7 +118,7 @@ mrb_value rotate90(mrb_state *mrb, mrb_value self)
 mrb_value mirror(mrb_state *mrb, mrb_value self)
 {
     mrb_bool vertical, horizontal;
-    mrb_get_args(mr b, "bb", &vertical, &horizontal);
+    mrb_get_args(mrb, "bb", &vertical, &horizontal);
     
     obj(self).mirror(vertical, horizontal);
     
@@ -182,6 +192,7 @@ void BindImage::Bind(mrb_state* mrb)
     mrb_define_class_method(mrb , cc, "load",               load,               MRB_ARGS_REQ(1));
     mrb_define_class_method(mrb , cc, "grab_screen",        grab_screen,        MRB_ARGS_REQ(4));
                                                              
+    mrb_define_method(mrb, cc,        "clone",              clone,              MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,        "save",               save,               MRB_ARGS_ARG(2, 1));
     mrb_define_method(mrb, cc,        "color",              color,              MRB_ARGS_REQ(2));
     mrb_define_method(mrb, cc,        "set_color",          set_color,          MRB_ARGS_REQ(3));
