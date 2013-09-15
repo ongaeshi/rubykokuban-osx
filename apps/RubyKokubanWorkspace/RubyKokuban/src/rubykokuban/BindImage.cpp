@@ -64,7 +64,13 @@ mrb_value clone(mrb_state *mrb, mrb_value self)
 
 mrb_value save(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    mrb_value str;
+    mrb_get_args(mrb, "S", &str);
+
+    string filename(mrb_string_value_ptr(mrb, str));
+    obj(self).saveImage(filename);
+
+    return self;
 }
 
 mrb_value color(mrb_state *mrb, mrb_value self)

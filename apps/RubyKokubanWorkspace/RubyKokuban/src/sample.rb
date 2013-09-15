@@ -11,6 +11,10 @@ def update
   @image.rotate90 if Input.mouse_press?(0)
   @image2.rotate90(-1) if Input.mouse_down?(2)
   @screen_image = Image.grab_screen(50, 90, 80, 80)
+
+  if Input.mouse_press?(2)
+    Image.grab_screen(0, 0, window_width, window_height).save("screenshot.png")
+  end
 end
 
 def draw
