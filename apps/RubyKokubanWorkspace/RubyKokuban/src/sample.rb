@@ -10,6 +10,7 @@ end
 def update
   @image.rotate90 if Input.mouse_press?(0)
   @image2.rotate90(-1) if Input.mouse_down?(2)
+  @screen_image = Image.grab_screen(50, 90, 80, 80)
 end
 
 def draw
@@ -80,6 +81,11 @@ def draw
   set_color(255, 255, 255)
   @clone_image = @mirror_image.clone.resize(80, 64) unless @clone_image
   @clone_image.draw(x, y)
+
+  x = 10; y = 300
+  description("grab_screen", x, y)
+  set_color(255, 255, 255)
+  @screen_image.draw(x, y + 10)
 
   # debug info
   set_color(0, 0, 0)

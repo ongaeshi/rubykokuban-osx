@@ -33,13 +33,23 @@ mrb_value load(mrb_state *mrb, mrb_value self)
     string filename(mrb_string_value_ptr(mrb, str));
     obj->loadImage(filename);
 
+    // error handling ..
+
     struct RData *data = mrb_data_object_alloc(mrb, mrb_class_ptr(self), obj, &data_type);
     return mrb_obj_value(data);
 }
 
 mrb_value grab_screen(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    ofImage* obj = new ofImage();
+
+    mrb_int x, y, w, h;
+    mrb_get_args(mrb, "iiii", &x, &y, &w, &h);
+    
+    obj->grabScreen(x, y, w, h);
+
+    struct RData *data = mrb_data_object_alloc(mrb, mrb_class_ptr(self), obj, &data_type);
+    return mrb_obj_value(data);
 }
 
 mrb_value clone(mrb_state *mrb, mrb_value self)
