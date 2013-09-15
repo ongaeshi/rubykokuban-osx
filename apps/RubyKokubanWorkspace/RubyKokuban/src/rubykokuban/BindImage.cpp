@@ -84,7 +84,15 @@ mrb_value crop_bang(mrb_state *mrb, mrb_value self)
 
 mrb_value crop(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    ofImage* newObj = new ofImage();
+
+    mrb_int x, y, w, h;
+    mrb_get_args(mrb, "iiii", &x, &y, &w, &h);
+
+    newObj->cropFrom(obj(self), x, y, w, h);
+        
+    struct RData *data = mrb_data_object_alloc(mrb, mrb_obj_class(mrb, self), newObj, &data_type);
+    return mrb_obj_value(data);
 }
 
 mrb_value rotate90(mrb_state *mrb, mrb_value self)
@@ -162,7 +170,7 @@ void BindImage::Bind(mrb_state* mrb)
     mrb_define_method(mrb, cc,        "set_color",          set_color,          MRB_ARGS_REQ(3));
     mrb_define_method(mrb, cc,        "resize",             resize,             MRB_ARGS_REQ(2));
     mrb_define_method(mrb, cc,        "set_image_type",     set_image_type,     MRB_ARGS_REQ(1));
-    mrb_define_method(mrb, cc,        "crop",               crop,               MRB_ARGS_REQ(5));
+    mrb_define_method(mrb, cc,        "crop",               crop,               MRB_ARGS_REQ(4));
     mrb_define_method(mrb, cc,        "crop!",              crop_bang,          MRB_ARGS_REQ(4));
     mrb_define_method(mrb, cc,        "rotate90",           rotate90,           MRB_ARGS_OPT(1));
     mrb_define_method(mrb, cc,        "mirror",             mirror,             MRB_ARGS_REQ(2));

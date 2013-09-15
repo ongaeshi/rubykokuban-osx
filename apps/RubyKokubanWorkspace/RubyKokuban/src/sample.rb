@@ -10,12 +10,14 @@ def setup
   @image3  = Image.load("sample.png")
   @image3.resize(40, 40)
 
+  @crop_bang_image = Image.load("sample.png")
+  @crop_bang_image.crop!(10, 10, 50, 50)
+  
+  @crop_image = @image.crop(10, 10, 50, 50)
+  
   @rotate_image  = Image.load("sample.png")
   @rotate_image.rotate90
 
-  @crop_image = Image.load("sample.png")
-  @crop_image.crop!(10, 10, 50, 50)
-  
 end
 
 def update
@@ -44,11 +46,15 @@ def draw
 
   description "crop!", 300, 100
   set_color(255, 255, 255)
-  @crop_image.draw(300, 100)
+  @crop_bang_image.draw(300, 100)
 
-  description("rotate90", 400, 100)
+  description "crop", 400, 100
   set_color(255, 255, 255)
-  @rotate_image.draw(400, 100)
+  @crop_image.draw(400, 100)
+
+  description("rotate90", 500, 100)
+  set_color(255, 255, 255)
+  @rotate_image.draw(500, 100)
 
   # debug info
   set_color(0, 0, 0)
