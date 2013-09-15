@@ -52,6 +52,11 @@ def draw
   @clone_image = @mirror_image.clone.resize(80, 64) unless @clone_image
   @clone_image.draw(100, 200)
 
+  x = 200; y = 200
+  description("draw(#{x}, #{y}, 80, 80)", x, y)
+  set_color(255, 255, 255)
+  @image.draw(x, y, 80, 80)
+
   # debug info
   set_color(0, 0, 0)
   text(DebugInfo.fps, 10, 15)

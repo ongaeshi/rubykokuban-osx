@@ -159,12 +159,15 @@ mrb_value reset_anchor(mrb_state *mrb, mrb_value self)
 
 mrb_value draw(mrb_state *mrb, mrb_value self)
 {
-    mrb_int x, y;
-    mrb_get_args(mrb, "ii", &x, &y);
-    
-    obj(self).draw(x, y);
+    mrb_float x, y, w, h;
+    int argNum = mrb_get_args(mrb, "ff|ff", &x, &y, &w, &h);
 
-    return mrb_nil_value();
+    if (argNum == 4)
+        obj(self).draw(x, y, w, h);
+    else 
+        obj(self).draw(x, y);
+
+    return self;
 }
 
 mrb_value draw_sub(mrb_state *mrb, mrb_value self)
@@ -206,7 +209,7 @@ void BindImage::Bind(mrb_state* mrb)
     mrb_define_method(mrb, cc,        "set_anchor_percent", set_anchor_percent, MRB_ARGS_REQ(2));
     mrb_define_method(mrb, cc,        "set_anchor_point",   set_anchor_point,   MRB_ARGS_REQ(2));
     mrb_define_method(mrb, cc,        "reset_anchor",       reset_anchor,       MRB_ARGS_REQ(2));
-    mrb_define_method(mrb, cc,        "draw",               draw,               MRB_ARGS_ARG(2, 3));
+    mrb_define_method(mrb, cc,        "draw",               draw,               MRB_ARGS_ARG(2, 2));
     mrb_define_method(mrb, cc,        "draw_sub",           draw_sub,           MRB_ARGS_ARG(6, 2));
     mrb_define_method(mrb, cc,        "height",             height,             MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,        "width",              width,              MRB_ARGS_NONE());
