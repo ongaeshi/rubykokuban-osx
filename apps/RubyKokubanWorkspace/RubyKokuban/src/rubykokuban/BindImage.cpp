@@ -172,7 +172,15 @@ mrb_value draw(mrb_state *mrb, mrb_value self)
 
 mrb_value draw_sub(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    mrb_float x, y, w, h, sx, sy, sw, sh;
+    int argNum = mrb_get_args(mrb, "ffffff|ff", &x, &y, &w, &h, &sx, &sy, &sw, &sh);
+
+    if (argNum == 8)
+        obj(self).drawSubsection(x, y, w, h, sx, sy, sw, sh);
+    else 
+        obj(self).drawSubsection(x, y, w, h, sx, sy);
+
+    return self;
 }
 
 mrb_value height(mrb_state *mrb, mrb_value self)

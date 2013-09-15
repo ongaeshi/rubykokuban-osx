@@ -53,9 +53,25 @@ def draw
   @clone_image.draw(100, 200)
 
   x = 200; y = 200
-  description("draw(#{x}, #{y}, 80, 80)", x, y)
+  description("draw(x,y,w,h)", x, y)
   set_color(255, 255, 255)
   @image.draw(x, y, 80, 80)
+
+  x = 330; y = 200
+  description("draw_sub", x, y)
+  set_color(255, 255, 255)
+  @image.draw_sub(x + 32, y,      32, 32,  0,  0)
+  @image.draw_sub(x + 32, y + 32, 32, 32, 32,  0)
+  @image.draw_sub(x,      y + 32, 32, 32,  0, 32)
+  @image.draw_sub(x,      y,      32, 32, 32, 32)
+
+  x = 430; y = 200
+  description("draw_sub2", x, y)
+  set_color(255, 255, 255)
+  @image.draw_sub(x + 32, y,      32, 32,  0,  0, 12, 12)
+  @image.draw_sub(x + 32, y + 32, 32, 32, 32,  0, 12, 12)
+  @image.draw_sub(x,      y + 32, 32, 32,  0, 32, 12, 12)
+  @image.draw_sub(x,      y,      32, 32, 32, 32, 12, 12)
 
   # debug info
   set_color(0, 0, 0)
