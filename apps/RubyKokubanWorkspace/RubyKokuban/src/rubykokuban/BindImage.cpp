@@ -185,12 +185,12 @@ mrb_value draw_sub(mrb_state *mrb, mrb_value self)
 
 mrb_value height(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    return mrb_float_value(mrb, obj(self).getHeight());
 }
 
 mrb_value width(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    return mrb_float_value(mrb, obj(self).getWidth());
 }
 
 }

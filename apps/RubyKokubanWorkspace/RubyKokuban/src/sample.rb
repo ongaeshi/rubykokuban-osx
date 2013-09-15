@@ -78,6 +78,7 @@ def draw
   text(DebugInfo.fps, 10, 15)
   text(DebugInfo.window, 10, 30)
   text(DebugInfo.mouse, 10, 45)
+  text("width: #{@image.width}, height: #{@image.height}", 10, 70)
 end
 
 # ----------------------------------------------------------
