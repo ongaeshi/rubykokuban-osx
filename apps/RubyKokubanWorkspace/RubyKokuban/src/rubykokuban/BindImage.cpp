@@ -108,7 +108,7 @@ mrb_value rotate90(mrb_state *mrb, mrb_value self)
 mrb_value mirror(mrb_state *mrb, mrb_value self)
 {
     mrb_bool vertical, horizontal;
-    mrb_get_args(mrb, "bb", &vertical, &horizontal);
+    mrb_get_args(mr b, "bb", &vertical, &horizontal);
     
     obj(self).mirror(vertical, horizontal);
     
@@ -123,17 +123,28 @@ mrb_value update(mrb_state *mrb, mrb_value self)
 
 mrb_value set_anchor_percent(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    mrb_float xpct, ypct;
+    mrb_get_args(mrb, "ff", &xpct, &ypct);
+    
+    obj(self).setAnchorPercent(xpct, ypct);
+    
+    return self;
 }
 
 mrb_value set_anchor_point(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    mrb_float x, y;
+    mrb_get_args(mrb, "ff", &x, &y);
+    
+    obj(self).setAnchorPoint(x, y);
+    
+    return self;
 }
 
 mrb_value reset_anchor(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    obj(self).resetAnchor();
+    return self;
 }
 
 mrb_value draw(mrb_state *mrb, mrb_value self)
