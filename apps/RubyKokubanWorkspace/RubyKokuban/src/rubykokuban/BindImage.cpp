@@ -79,6 +79,11 @@ mrb_value crop(mrb_state *mrb, mrb_value self)
 
 mrb_value rotate90(mrb_state *mrb, mrb_value self)
 {
+    mrb_int rotation = 1;
+    mrb_get_args(mrb, "|i", &rotation);
+    
+    obj(self).rotate90(rotation);
+
     return mrb_nil_value();
 }
 
@@ -149,7 +154,7 @@ void BindImage::Bind(mrb_state* mrb)
     mrb_define_method(mrb, cc,        "set_image_type",     set_image_type,     MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,        "crop",               crop,               MRB_ARGS_REQ(5));
     mrb_define_method(mrb, cc,        "crop!",              crop_bang,          MRB_ARGS_REQ(4));
-    mrb_define_method(mrb, cc,        "rotate90",           rotate90,           MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, cc,        "rotate90",           rotate90,           MRB_ARGS_OPT(1));
     mrb_define_method(mrb, cc,        "mirror",             mirror,             MRB_ARGS_REQ(2));
     mrb_define_method(mrb, cc,        "update",             update,             MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,        "set_anchor_percent", set_anchor_percent, MRB_ARGS_REQ(2));
