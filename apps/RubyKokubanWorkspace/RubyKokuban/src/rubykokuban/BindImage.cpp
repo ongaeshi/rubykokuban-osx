@@ -107,7 +107,12 @@ mrb_value rotate90(mrb_state *mrb, mrb_value self)
 
 mrb_value mirror(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    mrb_bool vertical, horizontal;
+    mrb_get_args(mrb, "bb", &vertical, &horizontal);
+    
+    obj(self).mirror(vertical, horizontal);
+    
+    return self;
 }
 
 mrb_value update(mrb_state *mrb, mrb_value self)

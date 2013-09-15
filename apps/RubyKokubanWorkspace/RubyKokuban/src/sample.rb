@@ -15,6 +15,8 @@ def setup
   
   @rotate_image = Image.load("sample.png").rotate90
 
+  @mirror_image = Image.load("sample.png").mirror(false, true)
+
 end
 
 def update
@@ -52,6 +54,12 @@ def draw
   description("rotate90", 500, 100)
   set_color(255, 255, 255)
   @rotate_image.draw(500, 100)
+
+  description("mirror", 0, 200)
+  set_color(255, 255, 255)
+  @mirror_image.draw(0, 200)
+
+
 
   # debug info
   set_color(0, 0, 0)
