@@ -117,7 +117,8 @@ mrb_value mirror(mrb_state *mrb, mrb_value self)
 
 mrb_value update(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    obj(self).update();
+    return self;
 }
 
 mrb_value set_anchor_percent(mrb_state *mrb, mrb_value self)
