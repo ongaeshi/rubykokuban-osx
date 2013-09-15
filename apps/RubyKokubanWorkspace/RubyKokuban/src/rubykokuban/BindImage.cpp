@@ -59,6 +59,11 @@ mrb_value set_color(mrb_state *mrb, mrb_value self)
 
 mrb_value resize(mrb_state *mrb, mrb_value self)
 {
+    mrb_int width, height;
+    mrb_get_args(mrb, "ii", &width, &height);
+
+    obj(self).resize(width, height);
+
     return mrb_nil_value();
 }
 

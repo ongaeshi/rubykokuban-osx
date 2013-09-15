@@ -4,8 +4,11 @@ def setup
   set_background(255, 255, 255)
 
   @image  = Image.load("sample.png")
+  
   @image2 = Image.load("sample.png")
 
+  @image3  = Image.load("sample.png")
+  @image3.resize(100, 100)
   
 end
 
@@ -21,6 +24,10 @@ def draw
 
   set_color(128, 255, 128)
   @image2.draw(100 + 50, 200)
+
+  set_color(255, 255, 255)
+  @image3.draw(100, 300)
+
 
   # debug info
   set_color(0, 0, 0)
