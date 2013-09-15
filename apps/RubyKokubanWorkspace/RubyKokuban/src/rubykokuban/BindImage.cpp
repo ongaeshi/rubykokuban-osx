@@ -64,7 +64,7 @@ mrb_value resize(mrb_state *mrb, mrb_value self)
 
     obj(self).resize(width, height);
 
-    return mrb_nil_value();
+    return self;
 }
 
 mrb_value set_image_type(mrb_state *mrb, mrb_value self)
@@ -79,7 +79,7 @@ mrb_value crop_bang(mrb_state *mrb, mrb_value self)
     
     obj(self).crop(x, y, w, h);
 
-    return mrb_nil_value();
+    return self;
 }
 
 mrb_value crop(mrb_state *mrb, mrb_value self)
@@ -102,7 +102,7 @@ mrb_value rotate90(mrb_state *mrb, mrb_value self)
     
     obj(self).rotate90(rotation);
 
-    return mrb_nil_value();
+    return self;
 }
 
 mrb_value mirror(mrb_state *mrb, mrb_value self)

@@ -3,20 +3,17 @@ def setup
   # set_window_pos(0, 0)
   set_background(255, 255, 255)
 
-  @image  = Image.load("sample.png")
+  @image = Image.load("sample.png")
   
   @image2 = Image.load("sample.png")
 
-  @image3  = Image.load("sample.png")
-  @image3.resize(40, 40)
+  @image3 = Image.load("sample.png").resize(40, 40)
 
-  @crop_bang_image = Image.load("sample.png")
-  @crop_bang_image.crop!(10, 10, 50, 50)
+  @crop_bang_image = Image.load("sample.png").crop!(10, 10, 50, 50)
   
   @crop_image = @image.crop(10, 10, 50, 50)
   
-  @rotate_image  = Image.load("sample.png")
-  @rotate_image.rotate90
+  @rotate_image = Image.load("sample.png").rotate90
 
 end
 
