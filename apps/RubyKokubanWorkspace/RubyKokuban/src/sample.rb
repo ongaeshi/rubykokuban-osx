@@ -3,6 +3,9 @@ def setup
   # set_window_pos(0, 0)
   set_background(255, 255, 255)
 
+  color = Color.new(1, 2, 3)
+  p color.r, color.g, color.b, color.a
+
   @image  = Image.load("sample.png")
   @image2 = Image.load("sample.png")
 end
@@ -12,9 +15,9 @@ def update
   @image2.rotate90(-1) if Input.mouse_down?(2)
   @screen_image = Image.grab_screen(50, 90, 80, 80)
 
-  if Input.mouse_press?(2)
-    Image.grab_screen(0, 0, window_width, window_height).save("screenshot.png")
-  end
+  # if Input.mouse_press?(2)
+  #   Image.grab_screen(0, 0, window_width, window_height).save("screenshot.png")
+  # end
 end
 
 def draw
