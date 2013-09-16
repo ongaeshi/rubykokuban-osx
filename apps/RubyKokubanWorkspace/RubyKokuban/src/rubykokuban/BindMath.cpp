@@ -11,8 +11,7 @@ namespace {
     {
         mrb_int seed;
 
-        if (mrb_get_args(mrb, "|i", 
-                         &seed) == 1) {
+        if (mrb_get_args(mrb, "|i", &seed) == 1) {
             ofSeedRandom(seed);
         } else {
             ofSeedRandom();
@@ -36,8 +35,9 @@ namespace {
 //--------------------------------------------------------------------------------
 void Bind::Math(mrb_state* mrb)
 {
-    mrb_define_method(mrb, mrb->kernel_module, "srand", srand, MRB_ARGS_REQ(0));
-    mrb_define_method(mrb, mrb->kernel_module, "rand", rand, MRB_ARGS_OPT(1));
+    // Use mruby-random now. (Thinking in...)
+    // mrb_define_method(mrb, mrb->kernel_module, "srand", srand, MRB_ARGS_REQ(0));
+    // mrb_define_method(mrb, mrb->kernel_module, "rand", rand, MRB_ARGS_OPT(1));
 }
 
 }
