@@ -75,7 +75,12 @@ mrb_value save(mrb_state *mrb, mrb_value self)
 
 mrb_value color(mrb_state *mrb, mrb_value self)
 {
-    return mrb_nil_value();
+    mrb_int x, y;
+    mrb_get_args(mrb, "ii", &x, &y);
+
+    ofColor* newObj = new ofColor(obj(self).getColor(x, y));
+
+    return Bind::NewColor(mrb, newObj);
 }
 
 mrb_value set_color(mrb_state *mrb, mrb_value self)

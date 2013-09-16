@@ -182,6 +182,13 @@ mrb_value aref(mrb_state *mrb, mrb_value self)
 
 }
 
+mrb_value Bind::NewColor(mrb_state* mrb, ofColor* aObj)
+{
+    struct RClass* cc = mrb_class_get(mrb, "Color");
+    struct RData *data = mrb_data_object_alloc(mrb, cc, aObj, &data_type);
+    return mrb_obj_value(data);
+}
+
 void Bind::Color(mrb_state* mrb)
 {
     struct RClass *cc = mrb_define_class(mrb, "Color", mrb->object_class);

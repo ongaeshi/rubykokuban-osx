@@ -94,6 +94,17 @@ def draw
   set_color(255, 255, 255)
   @screen_image.draw(x, y + 10)
 
+  x = 110; y = 300
+  description("set_color", x, y)
+  set_color(255, 255, 255)
+  unless @set_color_image
+    @set_color_image = @image.clone
+    p @set_color_image.color(32, 32).r
+    p @set_color_image.color(0, 0).r
+    p @set_color_image.color(32, 10).r
+  end
+  @set_color_image.draw(x, y)
+
   # debug info
   set_color(0, 0, 0)
   text(DebugInfo.fps, 10, 15)

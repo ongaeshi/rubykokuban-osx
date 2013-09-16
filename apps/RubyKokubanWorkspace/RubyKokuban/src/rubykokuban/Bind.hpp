@@ -1,10 +1,13 @@
 #pragma once
 
+#include "ofColor.h"
+
+struct mrb_state;
+struct mrb_value;
+
 namespace rubykokuban {
     class Input;
 }
-
-struct mrb_state;
 
 //----------------------------------------------------------
 namespace rubykokuban {
@@ -29,6 +32,8 @@ public:
     static void Math(mrb_state* mrb);
 
     static void InputSetup(::rubykokuban::Input& aInput);
+
+    static mrb_value NewColor(mrb_state* mrb, ofColor* aObj);
 };
 
 }
