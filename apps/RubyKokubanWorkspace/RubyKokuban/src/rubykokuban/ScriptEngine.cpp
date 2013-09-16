@@ -10,6 +10,7 @@
 #include "rubykokuban/BindGraphics.hpp"
 #include "rubykokuban/BindImage.hpp"
 #include "rubykokuban/BindInput.hpp"
+#include "rubykokuban/Bind.hpp"
 #include <stdint.h>
 
 namespace rubykokuban {
@@ -199,6 +200,7 @@ void ScriptEngine::setup()
     mConsoleModule = mrb_class_get(mMrb, "Console");
     
     // bind
+    Bind::Color(mMrb);
     BindApplication::Bind(mMrb);
     BindGraphics::Bind(mMrb);
     BindImage::Bind(mMrb);

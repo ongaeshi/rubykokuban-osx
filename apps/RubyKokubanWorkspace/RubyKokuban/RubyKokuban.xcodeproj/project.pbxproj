@@ -20,6 +20,7 @@
 		527E663B179440C8003F07E5 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 527E6632179440C8003F07E5 /* testApp.cpp */; };
 		527E66551795A044003F07E5 /* mrubybind.cc in Sources */ = {isa = PBXBuildFile; fileRef = 527E66501795A044003F07E5 /* mrubybind.cc */; };
 		527E66561795A044003F07E5 /* mrubybind.inc in Sources */ = {isa = PBXBuildFile; fileRef = 527E66531795A044003F07E5 /* mrubybind.inc */; };
+		52B18EA717E7419C0057FAA1 /* BindColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B18EA617E7419C0057FAA1 /* BindColor.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -112,6 +113,8 @@
 		527E66521795A044003F07E5 /* mrubybind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mrubybind.h; sourceTree = "<group>"; };
 		527E66531795A044003F07E5 /* mrubybind.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = mrubybind.inc; sourceTree = "<group>"; };
 		527E66541795A044003F07E5 /* mrubybind_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mrubybind_types.h; sourceTree = "<group>"; };
+		52B18EA517E7419C0057FAA1 /* Bind.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bind.hpp; sourceTree = "<group>"; };
+		52B18EA617E7419C0057FAA1 /* BindColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindColor.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -167,6 +170,8 @@
 		526368A317DACA500097EC94 /* rubykokuban */ = {
 			isa = PBXGroup;
 			children = (
+				52B18EA517E7419C0057FAA1 /* Bind.hpp */,
+				52B18EA617E7419C0057FAA1 /* BindColor.cpp */,
 				5260CB8D17DE42FC00819B8A /* BindImage.cpp */,
 				5260CB8E17DE42FC00819B8A /* BindImage.hpp */,
 				526368A417DACA500097EC94 /* BindApplication.cpp */,
@@ -420,6 +425,7 @@
 				526368B717DACA500097EC94 /* Mouse.cpp in Sources */,
 				526368B817DACA500097EC94 /* ScriptEngine.cpp in Sources */,
 				5260CB8F17DE42FC00819B8A /* BindImage.cpp in Sources */,
+				52B18EA717E7419C0057FAA1 /* BindColor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
