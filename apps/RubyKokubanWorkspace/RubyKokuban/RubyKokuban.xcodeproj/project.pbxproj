@@ -73,15 +73,10 @@
 
 /* Begin PBXFileReference section */
 		5260CB8D17DE42FC00819B8A /* BindImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindImage.cpp; sourceTree = "<group>"; };
-		5260CB8E17DE42FC00819B8A /* BindImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindImage.hpp; sourceTree = "<group>"; };
 		526368A417DACA500097EC94 /* BindApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindApplication.cpp; sourceTree = "<group>"; };
-		526368A517DACA500097EC94 /* BindApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindApplication.hpp; sourceTree = "<group>"; };
 		526368A617DACA500097EC94 /* BindGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindGraphics.cpp; sourceTree = "<group>"; };
-		526368A717DACA500097EC94 /* BindGraphics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindGraphics.hpp; sourceTree = "<group>"; };
 		526368A817DACA500097EC94 /* BindInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindInput.cpp; sourceTree = "<group>"; };
-		526368A917DACA500097EC94 /* BindInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindInput.hpp; sourceTree = "<group>"; };
 		526368AA17DACA500097EC94 /* BindMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BindMath.cpp; sourceTree = "<group>"; };
-		526368AB17DACA500097EC94 /* BindMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BindMath.hpp; sourceTree = "<group>"; };
 		526368AC17DACA500097EC94 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
 		526368AD17DACA500097EC94 /* Input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
 		526368AE17DACA500097EC94 /* Mouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mouse.cpp; sourceTree = "<group>"; };
@@ -173,15 +168,10 @@
 				52B18EA517E7419C0057FAA1 /* Bind.hpp */,
 				52B18EA617E7419C0057FAA1 /* BindColor.cpp */,
 				5260CB8D17DE42FC00819B8A /* BindImage.cpp */,
-				5260CB8E17DE42FC00819B8A /* BindImage.hpp */,
 				526368A417DACA500097EC94 /* BindApplication.cpp */,
-				526368A517DACA500097EC94 /* BindApplication.hpp */,
 				526368A617DACA500097EC94 /* BindGraphics.cpp */,
-				526368A717DACA500097EC94 /* BindGraphics.hpp */,
 				526368A817DACA500097EC94 /* BindInput.cpp */,
-				526368A917DACA500097EC94 /* BindInput.hpp */,
 				526368AA17DACA500097EC94 /* BindMath.cpp */,
-				526368AB17DACA500097EC94 /* BindMath.hpp */,
 				526368AC17DACA500097EC94 /* Input.cpp */,
 				526368AD17DACA500097EC94 /* Input.hpp */,
 				526368AE17DACA500097EC94 /* Mouse.cpp */,

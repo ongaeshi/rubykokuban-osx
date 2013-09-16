@@ -6,10 +6,6 @@
 #include "mruby/irep.h"
 #include "mruby/string.h"
 #include "ofMain.h"
-#include "rubykokuban/BindApplication.hpp"
-#include "rubykokuban/BindGraphics.hpp"
-#include "rubykokuban/BindImage.hpp"
-#include "rubykokuban/BindInput.hpp"
 #include "rubykokuban/Bind.hpp"
 #include <stdint.h>
 
@@ -200,11 +196,7 @@ void ScriptEngine::setup()
     mConsoleModule = mrb_class_get(mMrb, "Console");
     
     // bind
-    Bind::Color(mMrb);
-    BindApplication::Bind(mMrb);
-    BindGraphics::Bind(mMrb);
-    BindImage::Bind(mMrb);
-    BindInput::Bind(mMrb);
+    Bind::All(mMrb);
 
     // load user script
     load();

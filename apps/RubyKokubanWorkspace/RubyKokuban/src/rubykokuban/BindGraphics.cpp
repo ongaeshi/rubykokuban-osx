@@ -1,8 +1,10 @@
-#include "rubykokuban/BindGraphics.hpp"
+#include "rubykokuban/Bind.hpp"
 
 #include "mruby.h"
 #include "mrubybind.h"
 #include "ofGraphics.h"
+
+namespace rubykokuban {
 
 namespace {
     static mrb_value set_fill(mrb_state *mrb, mrb_value self)
@@ -36,7 +38,7 @@ namespace {
 }
 
 //----------------------------------------------------------
-void BindGraphics::Bind(mrb_state* mrb)
+void Bind::Graphics(mrb_state* mrb)
 {
     mrubybind::MrubyBind b(mrb);
 
@@ -55,3 +57,4 @@ void BindGraphics::Bind(mrb_state* mrb)
     b.bind("text", text);
 }
 
+}

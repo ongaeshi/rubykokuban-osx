@@ -1,4 +1,4 @@
-#include "rubykokuban/BindImage.hpp"
+#include "rubykokuban/Bind.hpp"
 
 #include "mruby.h"
 #include "mruby/class.h"
@@ -212,7 +212,7 @@ mrb_value width(mrb_state *mrb, mrb_value self)
 }
 
 //--------------------------------------------------------------------------------
-void BindImage::Bind(mrb_state* mrb)
+void Bind::Image(mrb_state* mrb)
 {
     struct RClass *cc = mrb_define_class(mrb, "Image", mrb->object_class);
     

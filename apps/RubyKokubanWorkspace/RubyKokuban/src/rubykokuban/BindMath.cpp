@@ -1,8 +1,10 @@
-#include "rubykokuban/BindMath.hpp"
+#include "rubykokuban/Bind.hpp"
 
 #include "mruby.h"
 #include "mrubybind.h"
 #include "ofMath.h"
+
+namespace rubykokuban {
 
 namespace {
     static mrb_value srand(mrb_state *mrb, mrb_value self)
@@ -32,10 +34,10 @@ namespace {
 }
 
 //--------------------------------------------------------------------------------
-void BindMath::Bind(mrb_state* mrb)
+void Bind::Math(mrb_state* mrb)
 {
     mrb_define_method(mrb, mrb->kernel_module, "srand", srand, MRB_ARGS_REQ(0));
     mrb_define_method(mrb, mrb->kernel_module, "rand", rand, MRB_ARGS_OPT(1));
 }
 
-//EOF
+}

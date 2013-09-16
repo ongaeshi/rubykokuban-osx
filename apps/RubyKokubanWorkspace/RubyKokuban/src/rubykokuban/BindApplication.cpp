@@ -1,8 +1,10 @@
-#include "rubykokuban/BindApplication.hpp"
+#include "rubykokuban/Bind.hpp"
 
 #include "mruby.h"
 #include "mrubybind.h"
 #include "ofAppRunner.h"
+
+namespace rubykokuban {
 
 namespace {
     static float get_frame_rate() { return ofGetFrameRate(); }
@@ -18,8 +20,8 @@ namespace {
     static int screen_height() { return ofGetScreenHeight(); }
 }
 
-//--------------------------------------------------------------------------------
-void BindApplication::Bind(mrb_state* mrb)
+//----------------------------------------------------------
+void Bind::Application(mrb_state* mrb)
 {
     mrubybind::MrubyBind b(mrb);
 
@@ -34,4 +36,5 @@ void BindApplication::Bind(mrb_state* mrb)
     b.bind("screen_height", screen_height);
 }
 
+}
 //EOF

@@ -1,13 +1,13 @@
 #include "testApp.hpp"
 
-#include "rubykokuban/BindInput.hpp"
+#include "rubykokuban/Bind.hpp"
 
 //--------------------------------------------------------------
 testApp::testApp(const char* aRootDir, const char* aScriptPath)
 : mInput()
 , mScriptEngine(aRootDir, aScriptPath)
 {
-    rubykokuban::BindInput::Setup(mInput);
+    rubykokuban::Bind::InputSetup(mInput);
 }
 
 //--------------------------------------------------------------
