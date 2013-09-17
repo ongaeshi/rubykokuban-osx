@@ -1,5 +1,6 @@
 #pragma once
 
+#include "rubykokuban/BindInput.hpp"
 #include "rubykokuban/BindColor.hpp"
 #include "rubykokuban/BindImage.hpp"
 
@@ -21,7 +22,7 @@ public:
         BindColor::Bind(mrb);
         Graphics(mrb);
         BindImage::Bind(mrb);
-        Input(mrb);
+        BindInput::Bind(mrb);
         Math(mrb);
     }
 
@@ -31,10 +32,6 @@ public:
     static void Image(mrb_state* mrb);
     static void Input(mrb_state* mrb);
     static void Math(mrb_state* mrb);
-
-    static void InputSetup(::rubykokuban::Input& aInput);
-
-    static mrb_value NewColor(mrb_state* mrb, ofColor* aObj);
 };
 
 }

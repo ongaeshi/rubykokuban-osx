@@ -1,4 +1,4 @@
-#include "rubykokuban/Bind.hpp"
+#include "rubykokuban/BindInput.hpp"
 
 #include "mruby.h"
 #include "ofAppRunner.h"
@@ -41,13 +41,13 @@ namespace {
 }
 
 //--------------------------------------------------------------------------------
-void Bind::InputSetup(::rubykokuban::Input& aInput)
+void BindInput::Setup(::rubykokuban::Input& aInput)
 {
     sInput = &aInput;
 }
 
 //--------------------------------------------------------------------------------
-void Bind::Input(mrb_state* mrb)
+void BindInput::Bind(mrb_state* mrb)
 {
     struct RClass* c = mrb_define_module(mrb, "Input");
 
