@@ -7,7 +7,7 @@
 namespace rubykokuban {
 
 namespace {
-    static mrb_value set_fill(mrb_state *mrb, mrb_value self)
+    mrb_value set_fill(mrb_state *mrb, mrb_value self)
     {
         mrb_bool is_fill;
 
@@ -23,18 +23,18 @@ namespace {
         }
     }
 
-    static void set_no_fill()                                                        { ofNoFill(); }
-    static bool is_fill()                                                            { return ofGetFill() == OF_FILLED; }
-    static void set_line_width(float width)                                          { ofSetLineWidth(width); }
-    static void set_color(int r, int g, int b)                                       { ofSetColor(r, g, b); }
-    static void set_background(int r, int g, int b)                                  { ofBackground(r, g, b); }
-    static void triangle(float x1, float y1, float x2, float y2, float x3, float y3) { ofTriangle(x1, y1, x2, y2, x3, y3); }
-    static void circle(float x, float y, float radius)                               { ofCircle(x, y, radius); }
-    static void ellipse(float x, float y, float width, float height)                 { ofEllipse(x, y, width, height); }
-    static void line(float x1, float y1, float x2, float y2)                         { ofLine(x1, y1, x2, y2); }
-    static void rect(float x, float y, float w, float h)                             { ofRect(x, y, w, h); }
-    static void rect_rounded(float x, float y, float w, float h, float r)            { ofRectRounded(x, y, w, h, r); }
-    static void text(string str, float x, float y)                                   { ofDrawBitmapString(str, x, y); }
+    void set_no_fill()                                                        { ofNoFill(); }
+    bool is_fill()                                                            { return ofGetFill() == OF_FILLED; }
+    void set_line_width(float width)                                          { ofSetLineWidth(width); }
+    void set_color(int r, int g, int b)                                       { ofSetColor(r, g, b); }
+    void set_background(int r, int g, int b)                                  { ofBackground(r, g, b); }
+    void triangle(float x1, float y1, float x2, float y2, float x3, float y3) { ofTriangle(x1, y1, x2, y2, x3, y3); }
+    void circle(float x, float y, float radius)                               { ofCircle(x, y, radius); }
+    void ellipse(float x, float y, float width, float height)                 { ofEllipse(x, y, width, height); }
+    void line(float x1, float y1, float x2, float y2)                         { ofLine(x1, y1, x2, y2); }
+    void rect(float x, float y, float w, float h)                             { ofRect(x, y, w, h); }
+    void rect_rounded(float x, float y, float w, float h, float r)            { ofRectRounded(x, y, w, h, r); }
+    void text(string str, float x, float y)                                   { ofDrawBitmapString(str, x, y); }
 }
 
 //----------------------------------------------------------

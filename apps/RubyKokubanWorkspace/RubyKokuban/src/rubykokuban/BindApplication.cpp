@@ -7,17 +7,17 @@
 namespace rubykokuban {
 
 namespace {
-    static float get_frame_rate() { return ofGetFrameRate(); }
-    static void set_window_pos(int x, int y) { ofSetWindowPosition(x, y); }
-    static void set_window_size(int width, int height) { ofSetWindowShape(width, height); }
-    static int window_pos_x() { return ofGetWindowPositionX(); }
-    static int window_pos_y() { return ofGetWindowPositionY(); }
-    // static int window_width() { return ofGetWidth(); }
-    // static int window_height() { return ofGetHeight(); }
-    static int window_width() { return ofGetWindowWidth(); }
-    static int window_height() { return ofGetWindowHeight(); }
-    static int screen_width() { return ofGetScreenWidth(); }
-    static int screen_height() { return ofGetScreenHeight(); }
+    float get_frame_rate() { return ofGetFrameRate(); }
+    void set_window_pos(int x, int y) { ofSetWindowPosition(x, y); }
+    void set_window_size(int width, int height) { ofSetWindowShape(width, height); }
+    int window_pos_x() { return ofGetWindowPositionX(); }
+    int window_pos_y() { return ofGetWindowPositionY(); }
+    // int window_width() { return ofGetWidth(); }
+    // int window_height() { return ofGetHeight(); }
+    int window_width() { return ofGetWindowWidth(); }
+    int window_height() { return ofGetWindowHeight(); }
+    int screen_width() { return ofGetScreenWidth(); }
+    int screen_height() { return ofGetScreenHeight(); }
 }
 
 //----------------------------------------------------------
