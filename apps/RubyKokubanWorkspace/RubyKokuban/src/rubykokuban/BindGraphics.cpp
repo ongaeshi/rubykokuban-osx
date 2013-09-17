@@ -38,7 +38,7 @@ namespace {
 }
 
 //----------------------------------------------------------
-void Bind::Graphics(mrb_state* mrb)
+void BindGraphics(mrb_state* mrb)
 {
     mrubybind::MrubyBind b(mrb);
 

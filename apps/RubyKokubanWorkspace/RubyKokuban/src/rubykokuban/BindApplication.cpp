@@ -21,7 +21,7 @@ namespace {
 }
 
 //----------------------------------------------------------
-void Bind::Application(mrb_state* mrb)
+void BindApplication(mrb_state* mrb)
 {
     mrubybind::MrubyBind b(mrb);
 
