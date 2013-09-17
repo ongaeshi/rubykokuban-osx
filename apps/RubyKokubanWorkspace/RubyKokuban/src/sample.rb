@@ -99,10 +99,18 @@ def draw
   set_color(255, 255, 255)
   unless @set_color_image
     @set_color_image = @image.clone
+
     p @set_color_image.color(32, 32).r
     p @set_color_image.color(0, 0).r
     p @set_color_image.color(32, 10).r
+
+    (0..63).each do |y|
+      @set_color_image.set_color(32, y, Color.new(255, 0, 0))
+    end
+
+    @set_color_image.update
   end
+
   @set_color_image.draw(x, y)
 
   # debug info
