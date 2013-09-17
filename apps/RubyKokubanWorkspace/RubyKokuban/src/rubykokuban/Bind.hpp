@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofColor.h"
+#include "rubykokuban/BindColor.hpp"
 
 struct mrb_state;
 struct mrb_value;
@@ -17,7 +17,7 @@ public:
     static void All(mrb_state* mrb)
     {
         Application(mrb);
-        Color(mrb);
+        BindColor::Bind(mrb);
         Graphics(mrb);
         Image(mrb);
         Input(mrb);

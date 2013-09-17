@@ -1,4 +1,5 @@
 #include "rubykokuban/Bind.hpp"
+#include "rubykokuban/BindColor.hpp"
 
 #include "mruby.h"
 #include "mruby/class.h"
@@ -78,9 +79,11 @@ mrb_value color(mrb_state *mrb, mrb_value self)
     mrb_int x, y;
     mrb_get_args(mrb, "ii", &x, &y);
 
-    ofColor* newObj = new ofColor(obj(self).getColor(x, y));
+    // TODO: mrb_obj_is_instance_of
 
-    return Bind::NewColor(mrb, newObj);
+    ofColor* color = new ofColor(obj(self).getColor(x, y));
+
+    return BindColor::ToMrb(mrb, color);
 }
 
 mrb_value set_color(mrb_state *mrb, mrb_value self)

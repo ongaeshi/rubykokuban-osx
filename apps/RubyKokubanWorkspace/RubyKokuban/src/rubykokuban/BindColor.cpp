@@ -1,4 +1,4 @@
-#include "rubykokuban/Bind.hpp"
+#include "rubykokuban/BindColor.hpp"
 
 #include "mruby.h"
 #include "mruby/class.h"
@@ -182,44 +182,49 @@ mrb_value aref(mrb_state *mrb, mrb_value self)
 
 }
 
-mrb_value Bind::NewColor(mrb_state* mrb, ofColor* aObj)
+void BindColor::Bind(mrb_state* aMrb)
+{
+    struct RClass *cc = mrb_define_class(aMrb, "Color", aMrb->object_class);
+
+    mrb_define_class_method(aMrb, cc, "new"               , initialize          , MRB_ARGS_ARG(3, 1));
+    mrb_define_class_method(aMrb, cc, "hex"               , hex                 , MRB_ARGS_ARG(1, 1));
+    mrb_define_class_method(aMrb, cc, "hsb"               , hsb                 , MRB_ARGS_ARG(3, 1));
+    mrb_define_class_method(aMrb, cc, "white"             , white               , MRB_ARGS_NONE());
+    mrb_define_class_method(aMrb, cc, "black"             , black               , MRB_ARGS_NONE());
+
+    mrb_define_method(aMrb, cc,       "r"                 , r                   , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "g"                 , g                   , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "b"                 , b                   , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "a"                 , a                   , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "clone"             , clone               , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "to_hex"            , to_hex              , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "clamp"             , clamp               , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "invert"            , invert              , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "normalize"         , normalize           , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "lerp"              , lerp                , MRB_ARGS_REQ(2));
+    mrb_define_method(aMrb, cc,       "hue"               , hue                 , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "saturation"        , saturation          , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "brightness"        , brightness          , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "lightness"         , lightness           , MRB_ARGS_NONE());
+    mrb_define_method(aMrb, cc,       "=="                , equal               , MRB_ARGS_REQ(1));
+    mrb_define_method(aMrb, cc,       "!="                , not_equal           , MRB_ARGS_REQ(1));
+    mrb_define_method(aMrb, cc,       "+"                 , plus                , MRB_ARGS_REQ(1));
+    mrb_define_method(aMrb, cc,       "-"                 , minus               , MRB_ARGS_REQ(1));
+    mrb_define_method(aMrb, cc,       "*"                 , mul                 , MRB_ARGS_REQ(1));
+    mrb_define_method(aMrb, cc,       "/"                 , div                 , MRB_ARGS_REQ(1));
+    mrb_define_method(aMrb, cc,       "[]"                , aref                , MRB_ARGS_REQ(1));
+}
+
+mrb_value BindColor::ToMrb(mrb_state* mrb, ofColor* aObj)
 {
     struct RClass* cc = mrb_class_get(mrb, "Color");
     struct RData *data = mrb_data_object_alloc(mrb, cc, aObj, &data_type);
     return mrb_obj_value(data);
 }
 
-void Bind::Color(mrb_state* mrb)
+ofColor* BindColor::ToPtr(mrb_state* aMrb, mrb_value aValue)
 {
-    struct RClass *cc = mrb_define_class(mrb, "Color", mrb->object_class);
-
-    mrb_define_class_method(mrb, cc, "new"               , initialize          , MRB_ARGS_ARG(3, 1));
-    mrb_define_class_method(mrb, cc, "hex"               , hex                 , MRB_ARGS_ARG(1, 1));
-    mrb_define_class_method(mrb, cc, "hsb"               , hsb                 , MRB_ARGS_ARG(3, 1));
-    mrb_define_class_method(mrb, cc, "white"             , white               , MRB_ARGS_NONE());
-    mrb_define_class_method(mrb, cc, "black"             , black               , MRB_ARGS_NONE());
-
-    mrb_define_method(mrb, cc,       "r"                 , r                   , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "g"                 , g                   , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "b"                 , b                   , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "a"                 , a                   , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "clone"             , clone               , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "to_hex"            , to_hex              , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "clamp"             , clamp               , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "invert"            , invert              , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "normalize"         , normalize           , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "lerp"              , lerp                , MRB_ARGS_REQ(2));
-    mrb_define_method(mrb, cc,       "hue"               , hue                 , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "saturation"        , saturation          , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "brightness"        , brightness          , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "lightness"         , lightness           , MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,       "=="                , equal               , MRB_ARGS_REQ(1));
-    mrb_define_method(mrb, cc,       "!="                , not_equal           , MRB_ARGS_REQ(1));
-    mrb_define_method(mrb, cc,       "+"                 , plus                , MRB_ARGS_REQ(1));
-    mrb_define_method(mrb, cc,       "-"                 , minus               , MRB_ARGS_REQ(1));
-    mrb_define_method(mrb, cc,       "*"                 , mul                 , MRB_ARGS_REQ(1));
-    mrb_define_method(mrb, cc,       "/"                 , div                 , MRB_ARGS_REQ(1));
-    mrb_define_method(mrb, cc,       "[]"                , aref                , MRB_ARGS_REQ(1));
+    return NULL;
 }
 
 }
