@@ -1,11 +1,11 @@
 #include "rubykokuban/Bind.hpp"
-#include "rubykokuban/BindColor.hpp"
 
 #include "mruby.h"
 #include "mruby/class.h"
 #include "mruby/data.h"
 #include "mruby/string.h"
 #include "ofMain.h"
+#include "rubykokuban/BindColor.hpp"
 
 namespace rubykokuban {
 

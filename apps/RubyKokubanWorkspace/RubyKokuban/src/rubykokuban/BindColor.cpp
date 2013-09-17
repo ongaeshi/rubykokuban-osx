@@ -1,6 +1,5 @@
 #include "rubykokuban/BindColor.hpp"
 
-#include "mruby.h"
 #include "mruby/class.h"
 #include "mruby/data.h"
 #include "mruby/value.h"
@@ -30,8 +29,7 @@ mrb_value initialize(mrb_state *mrb, mrb_value self)
 
     ofColor* obj = new ofColor(r, g, b, a);
 
-    struct RData *data = mrb_data_object_alloc(mrb, mrb_class_ptr(self), obj, &data_type);
-    return mrb_obj_value(data);
+    return BindColor::ToMrb(mrb, mrb_class_ptr(self), obj);
 }
 
 mrb_value hex(mrb_state *mrb, mrb_value self)
@@ -150,13 +148,13 @@ mrb_value not_equal(mrb_state *mrb, mrb_value self)
     return mrb_nil_value();
 }
 
-mrb_value plus(mrb_state *mrb, mrb_value self)
+mrb_value add(mrb_state *mrb, mrb_value self)
 {
     // return self;
     return mrb_nil_value();
 }
 
-mrb_value minus(mrb_state *mrb, mrb_value self)
+mrb_value sub(mrb_state *mrb, mrb_value self)
 {
     // return self;
     return mrb_nil_value();
@@ -180,6 +178,22 @@ mrb_value aref(mrb_state *mrb, mrb_value self)
     return mrb_nil_value();
 }
 
+}
+
+mrb_value BindColor::ToMrb(mrb_state* aMrb, ofColor* aPtr)
+{
+    return ToMrb(aMrb, mrb_class_get(aMrb, "Color"), aPtr);
+}
+
+mrb_value BindColor::ToMrb(mrb_state* aMrb, struct RClass* aClass, ofColor* aPtr)
+{
+    struct RData *data = mrb_data_object_alloc(aMrb, aClass, aPtr, &data_type);
+    return mrb_obj_value(data);
+}
+
+ofColor* BindColor::ToPtr(mrb_state* aMrb, mrb_value aValue)
+{
+    return NULL;
 }
 
 void BindColor::Bind(mrb_state* aMrb)
@@ -208,23 +222,12 @@ void BindColor::Bind(mrb_state* aMrb)
     mrb_define_method(aMrb, cc,       "lightness"         , lightness           , MRB_ARGS_NONE());
     mrb_define_method(aMrb, cc,       "=="                , equal               , MRB_ARGS_REQ(1));
     mrb_define_method(aMrb, cc,       "!="                , not_equal           , MRB_ARGS_REQ(1));
-    mrb_define_method(aMrb, cc,       "+"                 , plus                , MRB_ARGS_REQ(1));
-    mrb_define_method(aMrb, cc,       "-"                 , minus               , MRB_ARGS_REQ(1));
+    mrb_define_method(aMrb, cc,       "+"                 , add                 , MRB_ARGS_REQ(1));
+    mrb_define_method(aMrb, cc,       "-"                 , sub                 , MRB_ARGS_REQ(1));
     mrb_define_method(aMrb, cc,       "*"                 , mul                 , MRB_ARGS_REQ(1));
     mrb_define_method(aMrb, cc,       "/"                 , div                 , MRB_ARGS_REQ(1));
     mrb_define_method(aMrb, cc,       "[]"                , aref                , MRB_ARGS_REQ(1));
 }
 
-mrb_value BindColor::ToMrb(mrb_state* mrb, ofColor* aObj)
-{
-    struct RClass* cc = mrb_class_get(mrb, "Color");
-    struct RData *data = mrb_data_object_alloc(mrb, cc, aObj, &data_type);
-    return mrb_obj_value(data);
-}
-
-ofColor* BindColor::ToPtr(mrb_state* aMrb, mrb_value aValue)
-{
-    return NULL;
-}
 
 }
