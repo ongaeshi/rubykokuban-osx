@@ -1,4 +1,4 @@
-#include "rubykokuban/Bind.hpp"
+#include "rubykokuban/BindImage.hpp"
 
 #include "mruby.h"
 #include "mruby/class.h"
@@ -36,8 +36,7 @@ mrb_value load(mrb_state *mrb, mrb_value self)
 
     // error handling ..
 
-    struct RData *data = mrb_data_object_alloc(mrb, mrb_class_ptr(self), obj, &data_type);
-    return mrb_obj_value(data);
+    return BindImage::ToMrb(mrb, mrb_class_ptr(self), obj);
 }
 
 mrb_value grab_screen(mrb_state *mrb, mrb_value self)
@@ -49,8 +48,7 @@ mrb_value grab_screen(mrb_state *mrb, mrb_value self)
     
     obj->grabScreen(x, y, w, h);
 
-    struct RData *data = mrb_data_object_alloc(mrb, mrb_class_ptr(self), obj, &data_type);
-    return mrb_obj_value(data);
+    return BindImage::ToMrb(mrb, mrb_class_ptr(self), obj);
 }
 
 mrb_value clone(mrb_state *mrb, mrb_value self)
@@ -59,8 +57,7 @@ mrb_value clone(mrb_state *mrb, mrb_value self)
 
     newObj->clone(obj(self));
 
-    struct RData *data = mrb_data_object_alloc(mrb, mrb_obj_class(mrb, self), newObj, &data_type);
-    return mrb_obj_value(data);
+    return BindImage::ToMrb(mrb, mrb_obj_class(mrb, self), newObj);
 }
 
 mrb_value save(mrb_state *mrb, mrb_value self)
@@ -130,9 +127,8 @@ mrb_value crop(mrb_state *mrb, mrb_value self)
     mrb_get_args(mrb, "iiii", &x, &y, &w, &h);
 
     newObj->cropFrom(obj(self), x, y, w, h);
-        
-    struct RData *data = mrb_data_object_alloc(mrb, mrb_obj_class(mrb, self), newObj, &data_type);
-    return mrb_obj_value(data);
+
+    return BindImage::ToMrb(mrb, mrb_obj_class(mrb, self), newObj);
 }
 
 mrb_value rotate90(mrb_state *mrb, mrb_value self)
@@ -225,8 +221,31 @@ mrb_value width(mrb_state *mrb, mrb_value self)
 
 }
 
-//--------------------------------------------------------------------------------
-void Bind::Image(mrb_state* mrb)
+//----------------------------------------------------------
+mrb_value BindImage::ToMrb(mrb_state* mrb, ofImage* aPtr)
+{
+    return ToMrb(mrb, mrb_class_get(mrb, "Image"), aPtr);
+}
+
+//----------------------------------------------------------
+mrb_value BindImage::ToMrb(mrb_state* mrb, struct RClass* aClass, ofImage* aPtr)
+{
+    struct RData *data = mrb_data_object_alloc(mrb, aClass, aPtr, &data_type);
+    return mrb_obj_value(data);
+}
+
+//----------------------------------------------------------
+ofImage* BindImage::ToPtr(mrb_state* mrb, mrb_value aValue)
+{
+    if (!mrb_obj_is_instance_of(mrb, aValue, mrb_class_get(mrb, "Image"))) {
+        mrb_raise(mrb, E_TYPE_ERROR, "wrong argument class");
+    }
+
+    return static_cast<ofImage*>(DATA_PTR(aValue));
+}
+
+//----------------------------------------------------------
+void BindImage::Bind(mrb_state* mrb)
 {
     struct RClass *cc = mrb_define_class(mrb, "Image", mrb->object_class);
     

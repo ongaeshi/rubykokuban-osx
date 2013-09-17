@@ -180,17 +180,20 @@ mrb_value aref(mrb_state *mrb, mrb_value self)
 
 }
 
+//----------------------------------------------------------
 mrb_value BindColor::ToMrb(mrb_state* mrb, ofColor* aPtr)
 {
     return ToMrb(mrb, mrb_class_get(mrb, "Color"), aPtr);
 }
 
+//----------------------------------------------------------
 mrb_value BindColor::ToMrb(mrb_state* mrb, struct RClass* aClass, ofColor* aPtr)
 {
     struct RData *data = mrb_data_object_alloc(mrb, aClass, aPtr, &data_type);
     return mrb_obj_value(data);
 }
 
+//----------------------------------------------------------
 ofColor* BindColor::ToPtr(mrb_state* mrb, mrb_value aValue)
 {
     if (!mrb_obj_is_instance_of(mrb, aValue, mrb_class_get(mrb, "Color"))) {
@@ -200,6 +203,7 @@ ofColor* BindColor::ToPtr(mrb_state* mrb, mrb_value aValue)
     return static_cast<ofColor*>(DATA_PTR(aValue));
 }
 
+//----------------------------------------------------------
 void BindColor::Bind(mrb_state* mrb)
 {
     struct RClass *cc = mrb_define_class(mrb, "Color", mrb->object_class);
@@ -232,6 +236,5 @@ void BindColor::Bind(mrb_state* mrb)
     mrb_define_method(mrb, cc,       "/"                 , div                 , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "[]"                , aref                , MRB_ARGS_REQ(1));
 }
-
 
 }

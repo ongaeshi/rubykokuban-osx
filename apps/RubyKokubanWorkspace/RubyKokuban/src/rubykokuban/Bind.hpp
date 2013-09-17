@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rubykokuban/BindColor.hpp"
+#include "rubykokuban/BindImage.hpp"
 
 struct mrb_state;
 struct mrb_value;
@@ -19,7 +20,7 @@ public:
         Application(mrb);
         BindColor::Bind(mrb);
         Graphics(mrb);
-        Image(mrb);
+        BindImage::Bind(mrb);
         Input(mrb);
         Math(mrb);
     }
