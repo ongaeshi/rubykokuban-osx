@@ -22,9 +22,11 @@ void free(mrb_state *mrb, void *p)
 
 struct mrb_data_type data_type = { "rubykokuban_color", free };
 
+float LIMIT = 255;
+
 mrb_value initialize(mrb_state *mrb, mrb_value self)
 {
-    mrb_int r, g, b, a = 255;
+    mrb_int r, g, b, a = LIMIT;
     mrb_get_args(mrb, "iii|i", &r, &g, &b, &a);
 
     ofColor* obj = new ofColor(r, g, b, a);
@@ -34,14 +36,22 @@ mrb_value initialize(mrb_state *mrb, mrb_value self)
 
 mrb_value hex(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    mrb_int h, a = LIMIT;
+    mrb_get_args(mrb, "i|f", &h, &a);
+
+    ofColor* obj = new ofColor(ofColor::fromHex(h, a));
+
+    return BindColor::ToMrb(mrb, mrb_class_ptr(self), obj);
 }
 
 mrb_value hsb(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    mrb_float hue, saturation, brightness, alpha = LIMIT;
+    mrb_get_args(mrb, "fff|f", &hue, &saturation, &brightness, &alpha);
+
+    ofColor* obj = new ofColor(ofColor::fromHsb(hue, saturation, brightness, alpha));
+
+    return BindColor::ToMrb(mrb, mrb_class_ptr(self), obj);
 }
 
 mrb_value white(mrb_state *mrb, mrb_value self)
