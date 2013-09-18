@@ -3,6 +3,7 @@
 #include "mruby.h"
 #include "mrubybind.h"
 #include "ofGraphics.h"
+#include "rubykokuban/BindColor.hpp"
 
 namespace rubykokuban {
 
@@ -38,10 +39,34 @@ void set_line_width(float width)
     ofSetLineWidth(width);
 }
 
-void set_color(int r, int g, int b)
+mrb_value set_color(mrb_state *mrb, mrb_value self)
 {
-    ofSetColor(r, g, b);
+    mrb_value *argv;
+    int argc;
+
+    mrb_get_args(mrb, "*", &argv, &argc);
+
+    switch (argc) {
+    case 1:
+        // set_color(color)
+        ofSetColor(*BindColor::ToPtr(mrb, argv[0]));
+        break;
+    case 3:
+        // set_color(r, g, b)
+        ofSetColor(
+            mrb_fixnum(mrb_Integer(mrb, argv[0]))
+            , mrb_fixnum(mrb_Integer(mrb, argv[1]))
+            , mrb_fixnum(mrb_Integer(mrb, argv[2]))
+            );
+        break;
+    default:
+        mrb_raise(mrb, E_TYPE_ERROR, "wrong number of arguments");
+        break;
+    }
+
+    return mrb_nil_value();
 }
+
 
 void set_background(int r, int g, int b)
 {
@@ -95,7 +120,7 @@ void BindGraphics(mrb_state* mrb)
     b.bind(                    "set_no_fill",         set_no_fill       );
     b.bind(                    "is_fill",             is_fill           );
     b.bind(                    "set_line_width",      set_line_width    );
-    b.bind(                    "set_color",           set_color         );
+    mrb_define_method(mrb, cc, "set_color",           set_color         , MRB_ARGS_ARG(1, 2));
     b.bind(                    "set_background",      set_background    );
     b.bind(                    "triangle",            triangle          );
     b.bind(                    "circle",              circle            );
