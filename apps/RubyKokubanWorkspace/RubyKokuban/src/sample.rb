@@ -27,6 +27,18 @@ def draw
   description("Color.hsb", x, y)
   set_color(Color.hsb(@hue, 200, 255))
   circle(x + 32, y + 32, 32)
+  
+  x = 310; y = 50
+  description("clone", x, y)
+  clone_color = c.clone
+  clone_color.r = 180
+  clone_color.g = 90
+  clone_color.b = 180
+  clone_color.a = 128
+  set_color(c)
+  circle(x, y + 32, 32)
+  set_color(clone_color)
+  circle(x + 32, y + 32, 32)
 
   # debug info
   set_color(0, 0, 0)

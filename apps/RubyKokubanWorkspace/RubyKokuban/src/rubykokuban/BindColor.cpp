@@ -71,9 +71,25 @@ mrb_value r(mrb_state *mrb, mrb_value self)
     return mrb_fixnum_value(obj(self).r);
 }
 
+mrb_value r_set(mrb_state *mrb, mrb_value self)
+{
+    mrb_int r;
+    mrb_get_args(mrb, "i", &r);
+    obj(self).r = r;
+    return mrb_nil_value();
+}
+
 mrb_value g(mrb_state *mrb, mrb_value self)
 {
     return mrb_fixnum_value(obj(self).g);
+}
+
+mrb_value g_set(mrb_state *mrb, mrb_value self)
+{
+    mrb_int g;
+    mrb_get_args(mrb, "i", &g);
+    obj(self).g = g;
+    return mrb_nil_value();
 }
 
 mrb_value b(mrb_state *mrb, mrb_value self)
@@ -81,15 +97,30 @@ mrb_value b(mrb_state *mrb, mrb_value self)
     return mrb_fixnum_value(obj(self).b);
 }
 
+mrb_value b_set(mrb_state *mrb, mrb_value self)
+{
+    mrb_int b;
+    mrb_get_args(mrb, "i", &b);
+    obj(self).b = b;
+    return mrb_nil_value();
+}
+
 mrb_value a(mrb_state *mrb, mrb_value self)
 {
     return mrb_fixnum_value(obj(self).a);
 }
 
+mrb_value a_set(mrb_state *mrb, mrb_value self)
+{
+    mrb_int a;
+    mrb_get_args(mrb, "i", &a);
+    obj(self).a = a;
+    return mrb_nil_value();
+}
+
 mrb_value clone(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self)));
 }
 
 mrb_value to_hex(mrb_state *mrb, mrb_value self)
@@ -225,9 +256,13 @@ void BindColor::Bind(mrb_state* mrb)
     mrb_define_class_method(mrb, cc, "black"             , black               , MRB_ARGS_NONE());
 
     mrb_define_method(mrb, cc,       "r"                 , r                   , MRB_ARGS_NONE());
+    mrb_define_method(mrb, cc,       "r="                , r_set               , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "g"                 , g                   , MRB_ARGS_NONE());
+    mrb_define_method(mrb, cc,       "g="                , g_set               , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "b"                 , b                   , MRB_ARGS_NONE());
+    mrb_define_method(mrb, cc,       "b="                , b_set               , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "a"                 , a                   , MRB_ARGS_NONE());
+    mrb_define_method(mrb, cc,       "a="                , a_set               , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "clone"             , clone               , MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,       "to_hex"            , to_hex              , MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,       "clamp"             , clamp               , MRB_ARGS_NONE());
