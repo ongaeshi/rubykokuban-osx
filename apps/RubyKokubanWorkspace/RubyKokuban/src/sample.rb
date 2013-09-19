@@ -1,6 +1,6 @@
 def setup
   set_window_size(640, 480)
-  # set_window_pos(0, 0)
+  set_window_pos(1150, 100)
   set_background(255, 255, 255)
 
   @hue = 0
@@ -38,6 +38,29 @@ def draw
   set_color(c)
   circle(x, y + 32, 32)
   set_color(clone_color)
+  circle(x + 32, y + 32, 32)
+
+  x = 410; y = 50
+  description("to_hex", x, y)
+  c = Color.new(100, 255, 0)
+  set_color(0, 0, 0)
+  text("(#{c.r},#{c.g},#{c.b})", x, y + 25)
+  text("0x#{c.to_hex.to_s(16)}", x, y + 50)
+
+  x = 10; y = 150
+  description("normal", x, y)
+  c = Color.hex(0x3DB680)
+  set_color(c)
+  circle(x + 32, y + 32, 32)
+
+  x = 110; y = 150
+  description("invert", x, y)
+  set_color(c.invert)
+  circle(x + 32, y + 32, 32)
+
+  x = 210; y = 150
+  description("normal", x, y)
+  set_color(c.normalize)
   circle(x + 32, y + 32, 32)
 
   # debug info

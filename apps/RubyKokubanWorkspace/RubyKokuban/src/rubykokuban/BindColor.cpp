@@ -125,26 +125,22 @@ mrb_value clone(mrb_state *mrb, mrb_value self)
 
 mrb_value to_hex(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    return mrb_fixnum_value(obj(self).getHex());
 }
 
 mrb_value clamp(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self).getClamped()));
 }
 
 mrb_value invert(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self).getInverted()));
 }
 
 mrb_value normalize(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self).getNormalized()));
 }
 
 mrb_value lerp(mrb_state *mrb, mrb_value self)
