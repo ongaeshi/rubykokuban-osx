@@ -130,7 +130,7 @@ def draw
   description("c1 / c2", x, y + 150)
   assert(c1 / Color.new(128, 128, 255) == Color.new( 99, 199, 150))
 
-  description("c[0], c[0]=128", x, y + 166)
+  description("c[0]\nc[0]=128", x, y + 166)
   assert(c1[0] == 50)
   assert(c1[1] == 100)
   assert(c1[2] == 150)
@@ -139,6 +139,30 @@ def draw
   c1[0] = 255
   assert(c1[0] == 255)
 
+  # set_hsb
+  x = 310; y = 250
+  description("set_hsb", x, y)
+  c = Color.new(0, 0, 0)
+
+  c.brightness = 128
+  c.saturation = 255
+  c.hue        = 128
+  set_color(c)
+  rect(x, y + 5, 80, 16)
+  set_color(0, 0, 0)
+  text(c.to_hsb.to_s, x, y + 40)
+  
+  c.set_hsb(128, 255, 255)
+  set_color(c)
+  rect(x, y + 50, 80, 16)
+  set_color(0, 0, 0)
+  text(c.to_hsb.to_s, x, y + 85)
+
+  c.set_hsb(0, 255, 255)
+  set_color(c)
+  rect(x, y + 95, 80, 16)
+  set_color(0, 0, 0)
+  text(c.to_hsb.to_s, x, y + 130)
   
   # debug info
   set_color(0, 0, 0)

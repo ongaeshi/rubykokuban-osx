@@ -1,5 +1,6 @@
 #include "rubykokuban/BindColor.hpp"
 
+#include "mruby/array.h"
 #include "mruby/class.h"
 #include "mruby/data.h"
 #include "mruby/value.h"
@@ -175,31 +176,46 @@ mrb_value lightness(mrb_state *mrb, mrb_value self)
 
 mrb_value to_hsb(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    float hue, saturation, brightness; // Because can't use mrb_float
+    obj(self).getHsb(hue, saturation, brightness); 
+
+    mrb_value array = mrb_ary_new(mrb);
+    mrb_ary_push(mrb, array, mrb_float_value(mrb, hue));
+    mrb_ary_push(mrb, array, mrb_float_value(mrb, saturation));
+    mrb_ary_push(mrb, array, mrb_float_value(mrb, brightness));
+    
+    return array;
 }
 
 mrb_value hue_set(mrb_state *mrb, mrb_value self)
 {
-    // return self;
+    mrb_float value;
+    mrb_get_args(mrb, "f", &value);
+    obj(self).setHue(value);
     return mrb_nil_value();
 }
 
 mrb_value saturation_set(mrb_state *mrb, mrb_value self)
 {
-    // return self;
+    mrb_float value;
+    mrb_get_args(mrb, "f", &value);
+    obj(self).setSaturation(value);
     return mrb_nil_value();
 }
 
 mrb_value brightness_set(mrb_state *mrb, mrb_value self)
 {
-    // return self;
+    mrb_float value;
+    mrb_get_args(mrb, "f", &value);
+    obj(self).setBrightness(value);
     return mrb_nil_value();
 }
 
 mrb_value set_hsb(mrb_state *mrb, mrb_value self)
 {
-    // return self;
+    mrb_float hue, saturation, brightness, alpha = LIMIT;
+    mrb_get_args(mrb, "fff|f", &hue, &saturation, &brightness, &alpha);
+    obj(self).setHsb(hue, saturation, brightness, alpha);
     return mrb_nil_value();
 }
 
