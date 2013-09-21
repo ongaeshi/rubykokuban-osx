@@ -114,7 +114,38 @@ mrb_value clone(mrb_state *mrb, mrb_value self)
 
 mrb_value set(mrb_state *mrb, mrb_value self)
 {
-    // return self;
+    mrb_value *argv;
+    int argc;
+
+    mrb_get_args(mrb, "*", &argv, &argc);
+
+    switch (argc) {
+    case 1:
+        // set(color)
+        obj(self).set(*BindColor::ToPtr(mrb, mrb_obj_class(mrb, self), argv[0]));
+        break;
+    case 3:
+        // set(r, g, b)
+        obj(self).set(
+            mrb_fixnum(mrb_Integer(mrb, argv[0]))
+            , mrb_fixnum(mrb_Integer(mrb, argv[1]))
+            , mrb_fixnum(mrb_Integer(mrb, argv[2]))
+            );
+        break;
+    case 4:
+        // set(r, g, b, a)
+        obj(self).set(
+            mrb_fixnum(mrb_Integer(mrb, argv[0]))
+            , mrb_fixnum(mrb_Integer(mrb, argv[1]))
+            , mrb_fixnum(mrb_Integer(mrb, argv[2]))
+            , mrb_fixnum(mrb_Integer(mrb, argv[3]))
+            );
+        break;
+    default:
+        mrb_raise(mrb, E_TYPE_ERROR, "wrong number of arguments");
+        break;
+    }
+
     return mrb_nil_value();
 }
 
@@ -125,7 +156,10 @@ mrb_value to_hex(mrb_state *mrb, mrb_value self)
 
 mrb_value set_hex(mrb_state *mrb, mrb_value self)
 {
-    // return self;
+    mrb_int hex;
+    mrb_float alpha = LIMIT;
+    mrb_get_args(mrb, "i|f", &hex, &alpha);
+    obj(self).setHex(hex, alpha);
     return mrb_nil_value();
 }
 
@@ -348,7 +382,13 @@ mrb_value BindColor::ToMrb(mrb_state* mrb, struct RClass* aClass, ofColor* aPtr)
 //----------------------------------------------------------
 ofColor* BindColor::ToPtr(mrb_state* mrb, mrb_value aValue)
 {
-    if (!mrb_obj_is_instance_of(mrb, aValue, mrb_class_get(mrb, "Color"))) {
+    return ToPtr(mrb, mrb_class_get(mrb, "Color"), aValue);
+}
+
+//----------------------------------------------------------
+ofColor* BindColor::ToPtr(mrb_state* mrb, struct RClass* aClass, mrb_value aValue)
+{
+    if (!mrb_obj_is_instance_of(mrb, aValue, aClass)) {
         mrb_raise(mrb, E_TYPE_ERROR, "wrong argument class");
     }
 

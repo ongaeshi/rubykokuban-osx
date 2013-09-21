@@ -139,11 +139,11 @@ def draw
   c1[0] = 255
   assert(c1[0] == 255)
 
-  # set_hsb
   x = 310; y = 250
-  description("set_hsb", x, y)
+  description("set, set_hex, set_hsb", x, y)
   c = Color.new(0, 0, 0)
 
+  # set_hsb
   c.brightness = 128
   c.saturation = 255
   c.hue        = 128
@@ -163,7 +163,25 @@ def draw
   rect(x, y + 95, 80, 16)
   set_color(0, 0, 0)
   text(c.to_hsb.to_s, x, y + 130)
+
+  # set_hex
+  c.set_hex(0xF0BA32)
+  set_color(c)
+  rect(x, y + 140, 80, 16)
+
+  # set
+  c.set(Color.new(0, 255, 0))
+  set_color(c)
+  rect(x, y + 160, 80, 16)
+
+  c.set(255, 0, 0)
+  set_color(c)
+  rect(x, y + 180, 80, 16)
   
+  c.set(255, 0, 0, 128)
+  set_color(c)
+  rect(x, y + 200, 80, 16)
+
   # debug info
   set_color(0, 0, 0)
   text(DebugInfo.fps, 10, 15)
