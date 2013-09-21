@@ -145,8 +145,12 @@ mrb_value normalize(mrb_state *mrb, mrb_value self)
 
 mrb_value lerp(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    mrb_value targetValue;
+    mrb_float amount;
+    mrb_get_args(mrb, "of", &targetValue, &amount);
+    ofColor& target = *BindColor::ToPtr(mrb, targetValue);
+
+    return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self).getLerped(target, amount)));
 }
 
 mrb_value hue(mrb_state *mrb, mrb_value self)

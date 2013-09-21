@@ -4,11 +4,24 @@ def setup
   set_background(255, 255, 255)
 
   @hue = 0
+  @rate = 0
+end
+
+def ease_in(t)
+  v = 3.0 * t ** 3 - 2.0 * t ** 2
+  (v > 0.0) ? v : -v
+end
+
+def ease_out(t)
+  1.0 - ease_in(1.0 - t)
 end
 
 def update
   @hue += 1
   @hue = 0 if @hue >= 255
+
+  @rate += 0.01
+  @rate = 0.0 if @rate >= 1.0
 end
 
 def draw
@@ -48,7 +61,7 @@ def draw
   text("0x#{c.to_hex.to_s(16)}", x, y + 50)
 
   x = 10; y = 150
-  description("normal", x, y)
+  description("base", x, y)
   c = Color.hex(0x3DB680)
   set_color(c)
   circle(x + 32, y + 32, 32)
@@ -59,8 +72,13 @@ def draw
   circle(x + 32, y + 32, 32)
 
   x = 210; y = 150
-  description("normal", x, y)
+  description("normalize", x, y)
   set_color(c.normalize)
+  circle(x + 32, y + 32, 32)
+
+  x = 310; y = 150
+  description("lerp(white, #{@rate})", x, y)
+  set_color(c.lerp(Color.new(255, 255, 255), @rate))
   circle(x + 32, y + 32, 32)
 
   # debug info
