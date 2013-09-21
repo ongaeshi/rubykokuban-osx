@@ -130,6 +130,16 @@ def draw
   description("c1 / c2", x, y + 150)
   assert(c1 / Color.new(128, 128, 255) == Color.new( 99, 199, 150))
 
+  description("c[0], c[0]=128", x, y + 166)
+  assert(c1[0] == 50)
+  assert(c1[1] == 100)
+  assert(c1[2] == 150)
+  assert(c1[3] == 255)
+
+  c1[0] = 255
+  assert(c1[0] == 255)
+
+  
   # debug info
   set_color(0, 0, 0)
   text(DebugInfo.fps, 10, 15)

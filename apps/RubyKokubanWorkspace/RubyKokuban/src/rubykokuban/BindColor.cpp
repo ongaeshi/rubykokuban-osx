@@ -268,7 +268,19 @@ mrb_value div(mrb_state *mrb, mrb_value self)
 
 mrb_value aref(mrb_state *mrb, mrb_value self)
 {
-    // return self;
+    mrb_int n;
+    mrb_get_args(mrb, "i", &n);
+
+    return mrb_fixnum_value(obj(self)[n]);
+}
+
+mrb_value aref_set(mrb_state *mrb, mrb_value self)
+{
+    mrb_int n, value;
+    mrb_get_args(mrb, "ii", &n, &value);
+
+    obj(self)[n] = value;
+
     return mrb_nil_value();
 }
 
@@ -332,6 +344,7 @@ void BindColor::Bind(mrb_state* mrb)
     mrb_define_method(mrb, cc,       "*"                 , mul                 , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "/"                 , div                 , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "[]"                , aref                , MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, cc,       "[]="               , aref_set            , MRB_ARGS_REQ(1));
 }
 
 }
