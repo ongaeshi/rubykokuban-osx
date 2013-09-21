@@ -155,26 +155,22 @@ mrb_value lerp(mrb_state *mrb, mrb_value self)
 
 mrb_value hue(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    return mrb_float_value(mrb, obj(self).getHue());
 }
 
 mrb_value saturation(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    return mrb_float_value(mrb, obj(self).getSaturation());
 }
 
 mrb_value brightness(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    return mrb_float_value(mrb, obj(self).getBrightness());
 }
 
 mrb_value lightness(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    return mrb_float_value(mrb, obj(self).getLightness());
 }
 
 mrb_value equal(mrb_state *mrb, mrb_value self)

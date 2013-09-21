@@ -81,6 +81,15 @@ def draw
   set_color(c.lerp(Color.new(255, 255, 255), @rate))
   circle(x + 32, y + 32, 32)
 
+  x = 10; y = 250
+  description("to_hsb", x, y)
+  c = Color.new(100, 255, 0)
+  set_color(c)
+  rect(x + 95, y + 12, 16, 16)
+  set_color(0, 0, 0)
+  text("(#{c.r},#{c.g},#{c.b})", x, y + 25)
+  text("hue: #{c.hue}\nsaturation: #{c.saturation}\nbrightness: #{c.brightness}\nlightness: #{c.lightness}", x, y + 50)
+
   # debug info
   set_color(0, 0, 0)
   text(DebugInfo.fps, 10, 15)
