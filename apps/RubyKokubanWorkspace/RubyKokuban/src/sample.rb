@@ -24,6 +24,10 @@ def update
   @rate = 0.0 if @rate >= 1.0
 end
 
+def assert(val)
+  raise if !val
+end
+
 def draw
   x = 10; y = 50
   description("Color.new", x, y)
@@ -89,6 +93,42 @@ def draw
   set_color(0, 0, 0)
   text("(#{c.r},#{c.g},#{c.b})", x, y + 25)
   text("hue: #{c.hue}\nsaturation: #{c.saturation}\nbrightness: #{c.brightness}\nlightness: #{c.lightness}", x, y + 50)
+
+  x = 210; y = 250
+  description("op", x, y)
+  c1 = Color.new( 50, 100, 150)
+  c2 = Color.new(150, 100,  50)
+  c3 = Color.new( 50, 100, 150)
+
+  description("c1 == c2", x, y + 15)
+  assert(c1 == c3)
+
+  description("c1 != c2", x, y + 30)
+  assert(c1 != c2)
+
+  description("c1 + 100.0", x, y + 45)
+  assert(c1 + 100 == Color.new(150, 200, 250))
+
+  description("c1 + c2", x, y + 60)
+  assert(c1 + c2 == Color.new(200, 200, 200))
+
+  description("c1 - 10.0", x, y + 75)
+  assert(c1 - 10 == Color.new( 40,  90, 140))
+
+  description("c1 - c2", x, y + 90)
+  assert(c1 - c2 == Color.new(156,   0, 100))
+
+  description("c1 * 0.5", x, y + 105)
+  assert(c1 * 0.5 == Color.new( 25,  50,  75))
+
+  description("c1 * c2", x, y + 120)
+  assert(c1 * Color.new(128, 128, 128) == Color.new( 25, 50, 75))
+
+  description("c1 / 2.0", x, y + 135)
+  assert(c1 / 2 == Color.new( 25,  50,  75))
+
+  description("c1 / c2", x, y + 150)
+  assert(c1 / Color.new(128, 128, 255) == Color.new( 99, 199, 150))
 
   # debug info
   set_color(0, 0, 0)

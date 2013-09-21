@@ -175,38 +175,95 @@ mrb_value lightness(mrb_state *mrb, mrb_value self)
 
 mrb_value equal(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
-}
+    mrb_value targetValue;
+    mrb_get_args(mrb, "o", &targetValue);
+    ofColor& target = *BindColor::ToPtr(mrb, targetValue);
 
-mrb_value not_equal(mrb_state *mrb, mrb_value self)
-{
-    // return self;
-    return mrb_nil_value();
+    return mrb_bool_value(obj(self) == target);
 }
 
 mrb_value add(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    mrb_value *argv;
+    int argc;
+
+    mrb_get_args(mrb, "*", &argv, &argc);
+
+    if (argc != 1) {
+        mrb_raise(mrb, E_TYPE_ERROR, "wrong number of arguments");
+    }
+
+    if (mrb_obj_is_instance_of(mrb, argv[0], mrb_obj_class(mrb, self))) {
+        ofColor& target = *static_cast<ofColor*>(DATA_PTR(argv[0]));
+        return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self) + target));
+
+    } else {
+        mrb_value value = mrb_Float(mrb, argv[0]);
+        return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self) + mrb_float(value)));
+    }
 }
 
 mrb_value sub(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    mrb_value *argv;
+    int argc;
+
+    mrb_get_args(mrb, "*", &argv, &argc);
+
+    if (argc != 1) {
+        mrb_raise(mrb, E_TYPE_ERROR, "wrong number of arguments");
+    }
+
+    if (mrb_obj_is_instance_of(mrb, argv[0], mrb_obj_class(mrb, self))) {
+        ofColor& target = *static_cast<ofColor*>(DATA_PTR(argv[0]));
+        return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self) - target));
+
+    } else {
+        mrb_value value = mrb_Float(mrb, argv[0]);
+        return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self) - mrb_float(value)));
+    }
 }
 
 mrb_value mul(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    mrb_value *argv;
+    int argc;
+
+    mrb_get_args(mrb, "*", &argv, &argc);
+
+    if (argc != 1) {
+        mrb_raise(mrb, E_TYPE_ERROR, "wrong number of arguments");
+    }
+
+    if (mrb_obj_is_instance_of(mrb, argv[0], mrb_obj_class(mrb, self))) {
+        ofColor& target = *static_cast<ofColor*>(DATA_PTR(argv[0]));
+        return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self) * target));
+
+    } else {
+        mrb_value value = mrb_Float(mrb, argv[0]);
+        return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self) * mrb_float(value)));
+    }
 }
 
 mrb_value div(mrb_state *mrb, mrb_value self)
 {
-    // return self;
-    return mrb_nil_value();
+    mrb_value *argv;
+    int argc;
+
+    mrb_get_args(mrb, "*", &argv, &argc);
+
+    if (argc != 1) {
+        mrb_raise(mrb, E_TYPE_ERROR, "wrong number of arguments");
+    }
+
+    if (mrb_obj_is_instance_of(mrb, argv[0], mrb_obj_class(mrb, self))) {
+        ofColor& target = *static_cast<ofColor*>(DATA_PTR(argv[0]));
+        return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self) / target));
+
+    } else {
+        mrb_value value = mrb_Float(mrb, argv[0]);
+        return BindColor::ToMrb(mrb, mrb_obj_class(mrb, self), new ofColor(obj(self) / mrb_float(value)));
+    }
 }
 
 mrb_value aref(mrb_state *mrb, mrb_value self)
@@ -270,7 +327,6 @@ void BindColor::Bind(mrb_state* mrb)
     mrb_define_method(mrb, cc,       "brightness"        , brightness          , MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,       "lightness"         , lightness           , MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,       "=="                , equal               , MRB_ARGS_REQ(1));
-    mrb_define_method(mrb, cc,       "!="                , not_equal           , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "+"                 , add                 , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "-"                 , sub                 , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "*"                 , mul                 , MRB_ARGS_REQ(1));
