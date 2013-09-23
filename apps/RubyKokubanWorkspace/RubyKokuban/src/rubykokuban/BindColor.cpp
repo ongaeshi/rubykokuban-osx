@@ -364,6 +364,18 @@ mrb_value aref_set(mrb_state *mrb, mrb_value self)
     return mrb_nil_value();
 }
 
+mrb_value inspect(mrb_state *mrb, mrb_value self)
+{
+    char buff[30];
+
+    if (obj(self).a == LIMIT)
+        sprintf(buff, "(%d,%d,%d)", obj(self).r, obj(self).g, obj(self).b);
+    else
+        sprintf(buff, "(%d,%d,%d,%d)", obj(self).r, obj(self).g, obj(self).b, obj(self).a);
+        
+    return mrb_str_new_cstr(mrb, buff);
+}
+
 }
 
 //----------------------------------------------------------
@@ -436,6 +448,7 @@ void BindColor::Bind(mrb_state* mrb)
     mrb_define_method(mrb, cc,       "/"                 , div                 , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "[]"                , aref                , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "[]="               , aref_set            , MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, cc,       "inspect"           , inspect             , MRB_ARGS_NONE());
 }
 
 }
