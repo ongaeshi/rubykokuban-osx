@@ -103,9 +103,19 @@ void rect_rounded(float x, float y, float w, float h, float r)
     ofRectRounded(x, y, w, h, r);
 }
 
-void text(string str, float x, float y)
+mrb_value text(mrb_state *mrb, mrb_value self)
 {
-    ofDrawBitmapString(str, x, y);
+    mrb_value str;
+    mrb_int x, y;
+
+#if 1
+    mrb_get_args(mrb, "Sii", &str, &x, &y);
+    ofDrawBitmapString(mrb_str_to_cstr(mrb, str), x, y);
+#else
+    // Display any object#to_s
+    mrb_get_args(mrb, "oii", &str, &x, &y);
+    ofDrawBitmapString(mrb_str_to_cstr(mrb, mrb_obj_as_string(mrb, str)), x, y);
+#endif 
 }
 
 }
@@ -128,7 +138,7 @@ void BindGraphics(mrb_state* mrb)
     b.bind(                    "line",                line              );
     b.bind(                    "rect",                rect              );
     b.bind(                    "rect_rounded",        rect_rounded      );
-    b.bind(                    "text",                text              );
+    mrb_define_class_method(mrb, cc, "text",          text              , MRB_ARGS_REQ(3));
 }
 
 }
