@@ -416,6 +416,12 @@ void BindColor::Bind(mrb_state* mrb)
     mrb_define_class_method(mrb, cc, "hex"               , hex                 , MRB_ARGS_ARG(1, 1));
     mrb_define_class_method(mrb, cc, "hsb"               , hsb                 , MRB_ARGS_ARG(3, 1));
 
+    mrb_define_const(mrb, cc, "White", ToMrb(mrb, cc, new ofColor(ofColor::white)));
+    mrb_define_const(mrb, cc, "Black", ToMrb(mrb, cc, new ofColor(ofColor::black)));
+    mrb_define_const(mrb, cc, "Gray",  ToMrb(mrb, cc, new ofColor(ofColor::gray)));
+    mrb_define_const(mrb, cc, "Red",   ToMrb(mrb, cc, new ofColor(ofColor::red)));
+    mrb_define_const(mrb, cc, "Green", ToMrb(mrb, cc, new ofColor(ofColor::green)));
+
     mrb_define_method(mrb, cc,       "r"                 , r                   , MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,       "r="                , r_set               , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc,       "g"                 , g                   , MRB_ARGS_NONE());
