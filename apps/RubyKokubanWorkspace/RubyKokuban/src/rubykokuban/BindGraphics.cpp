@@ -126,19 +126,19 @@ void BindGraphics(mrb_state* mrb)
     struct RClass *cc = mrb->kernel_module;
     mrubybind::MrubyBind b(mrb);
 
-    mrb_define_class_method(mrb, cc, "set_fill",            set_fill          , MRB_ARGS_OPT(1));
-    b.bind(                          "set_no_fill",         set_no_fill       );
-    b.bind(                          "is_fill",             is_fill           );
-    b.bind(                          "set_line_width",      set_line_width    );
-    mrb_define_class_method(mrb, cc, "set_color",           set_color         , MRB_ARGS_ARG(1, 2));
-    b.bind(                          "set_background",      set_background    );
-    b.bind(                          "triangle",            triangle          );
-    b.bind(                          "circle",              circle            );
-    b.bind(                          "ellipse",             ellipse           );
-    b.bind(                          "line",                line              );
-    b.bind(                          "rect",                rect              );
-    b.bind(                          "rect_rounded",        rect_rounded      );
-    mrb_define_class_method(mrb, cc, "text",                text              , MRB_ARGS_REQ(3));
+    mrb_define_method(mrb, cc, "set_fill",            set_fill          , MRB_ARGS_OPT(1));
+    b.bind(                    "set_no_fill",         set_no_fill       );
+    b.bind(                    "is_fill",             is_fill           );
+    b.bind(                    "set_line_width",      set_line_width    );
+    mrb_define_method(mrb, cc, "set_color",           set_color         , MRB_ARGS_ARG(1, 2));
+    b.bind(                    "set_background",      set_background    );
+    b.bind(                    "triangle",            triangle          );
+    b.bind(                    "circle",              circle            );
+    b.bind(                    "ellipse",             ellipse           );
+    b.bind(                    "line",                line              );
+    b.bind(                    "rect",                rect              );
+    b.bind(                    "rect_rounded",        rect_rounded      );
+    mrb_define_method(mrb, cc, "text",                text              , MRB_ARGS_REQ(3));
 }
 
 }
