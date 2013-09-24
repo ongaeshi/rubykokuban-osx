@@ -17,7 +17,7 @@ def setup
 end
 
 def update
-  @mosaic_power -= 0.1
+  @mosaic_power -= 0.05
   @mosaic_power = 16 if @mosaic_power < 1
 end
 
@@ -39,6 +39,13 @@ def draw
   @image.each_pixels(power, power) do |i, j|
     Kernel::set_color(self.color(i, j))
     rect(x + i, y + j, power, power)
+  end
+
+  x = 310; y = 50
+  description("dotting", x, y)
+  @image.each_pixels(4, 4) do |i, j|
+    Kernel::set_color(self.color(i + 2, j + 2))
+    circle(x + i + 2, y + j + 2, 2)
   end
 
   # debug info
