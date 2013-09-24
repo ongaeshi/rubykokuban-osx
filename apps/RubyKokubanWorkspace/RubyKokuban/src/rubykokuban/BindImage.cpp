@@ -219,6 +219,38 @@ mrb_value width(mrb_state *mrb, mrb_value self)
     return mrb_float_value(mrb, obj(self).getWidth());
 }
 
+mrb_value each_pixels(mrb_state *mrb, mrb_value self)
+{
+#if 1
+    unsigned char* pixels = obj(self).getPixels();
+    int width = obj(self).width;
+    int height = obj(self).height;
+
+    mrb_value block;
+    mrb_get_args(mrb, "&", &block);
+
+    for (int i = 0; i < width; i += 1) {
+        for (int j = 0; j < height; j += 1) {
+            int ai = mrb_gc_arena_save(mrb);
+
+            mrb_value argv[3];
+            argv[0] = mrb_fixnum_value(i);
+            argv[1] = mrb_fixnum_value(j);
+
+            int r = pixels[j*4 * width + i*4];
+            int g = pixels[j*4 * width + i*4+1];
+            int b = pixels[j*4 * width + i*4+2];
+            argv[2] = BindColor::ToMrb(mrb, new ofColor(r, g, b));
+
+            mrb_yield_argv(mrb, block, 3, argv);
+            // mrb_yield(mrb, block, mrb_nil_value());
+            mrb_gc_arena_restore(mrb, ai);
+        }
+    }
+#endif 
+    return mrb_nil_value();
+}
+
 }
 
 //----------------------------------------------------------
@@ -270,6 +302,7 @@ void BindImage::Bind(mrb_state* mrb)
     mrb_define_method(mrb, cc,        "draw_sub",           draw_sub,           MRB_ARGS_ARG(6, 2));
     mrb_define_method(mrb, cc,        "height",             height,             MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,        "width",              width,              MRB_ARGS_NONE());
+    mrb_define_method(mrb, cc,        "each_pixels",        each_pixels,        MRB_ARGS_NONE());
 }
 
 }
