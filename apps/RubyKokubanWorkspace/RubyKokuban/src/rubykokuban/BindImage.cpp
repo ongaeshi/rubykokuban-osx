@@ -221,33 +221,24 @@ mrb_value width(mrb_state *mrb, mrb_value self)
 
 mrb_value each_pixels(mrb_state *mrb, mrb_value self)
 {
-#if 1
-    unsigned char* pixels = obj(self).getPixels();
     int width = obj(self).width;
     int height = obj(self).height;
 
+    mrb_int x_step = 1, y_step = 1;
     mrb_value block;
-    mrb_get_args(mrb, "&", &block);
+    mrb_get_args(mrb, "|ii&", &x_step, &y_step, &block);
 
-    for (int i = 0; i < width; i += 1) {
-        for (int j = 0; j < height; j += 1) {
-            int ai = mrb_gc_arena_save(mrb);
+    for (int i = 0; i < width; i += x_step) {
+        for (int j = 0; j < height; j += y_step) {
+            static const int ARGC = 2;
 
-            mrb_value argv[3];
+            mrb_value argv[ARGC];
             argv[0] = mrb_fixnum_value(i);
             argv[1] = mrb_fixnum_value(j);
-
-            int r = pixels[j*4 * width + i*4];
-            int g = pixels[j*4 * width + i*4+1];
-            int b = pixels[j*4 * width + i*4+2];
-            argv[2] = BindColor::ToMrb(mrb, new ofColor(r, g, b));
-
-            mrb_yield_argv(mrb, block, 3, argv);
-            // mrb_yield(mrb, block, mrb_nil_value());
-            mrb_gc_arena_restore(mrb, ai);
+            mrb_yield_argv(mrb, block, ARGC, argv);
         }
     }
-#endif 
+
     return mrb_nil_value();
 }
 
