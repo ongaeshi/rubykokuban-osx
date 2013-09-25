@@ -11,10 +11,11 @@
 extern "C" {
 #endif
 
+/* Program data array struct */
 typedef struct mrb_irep {
   uint32_t idx;
-  uint16_t nlocals;
-  uint16_t nregs;
+  uint16_t nlocals;        /* Number of local variables */
+  uint16_t nregs;          /* Number of register variables */
   uint8_t flags;
 
   mrb_code *iseq;
@@ -24,6 +25,7 @@ typedef struct mrb_irep {
   /* debug info */
   const char *filename;
   uint16_t *lines;
+  struct mrb_irep_debug_info* debug_info;
 
   size_t ilen, plen, slen;
 } mrb_irep;
