@@ -7,9 +7,9 @@ def setup
 
   @image_gray = @image.clone
   @image_gray.each_pixels do |x, y|
-    c = self.color(x, y)        # Can't '@image_gray.color(x, y)'. Why?
+    c = @image_gray.color(x, y)
     b = c.brightness
-    self.set_color(x, y, Color.new(b, b, b, c.a))
+    @image_gray.set_color(x, y, Color.new(b, b, b, c.a))
   end
   @image_gray.update
 
@@ -37,14 +37,14 @@ def draw
   description("mosaic", x, y)
   power = @mosaic_power
   @image.each_pixels(power, power) do |i, j|
-    Kernel::set_color(self.color(i, j))
+    set_color(@image.color(i, j))
     rect(x + i, y + j, power, power)
   end
 
   x = 310; y = 50
   description("dotting", x, y)
   @image.each_pixels(4, 4) do |i, j|
-    Kernel::set_color(self.color(i + 2, j + 2))
+    set_color(@image.color(i + 2, j + 2))
     circle(x + i + 2, y + j + 2, 2)
   end
 
