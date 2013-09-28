@@ -242,6 +242,37 @@ mrb_value each_pixels(mrb_state *mrb, mrb_value self)
     return mrb_nil_value();
 }
 
+mrb_value map_pixels(mrb_state *mrb, mrb_value self)
+{
+    ofImage* newObj = new ofImage();
+    newObj->clone(obj(self));
+
+    int width = obj(self).width;
+    int height = obj(self).height;
+
+    mrb_int x_step = 1, y_step = 1;
+    mrb_value block;
+    mrb_get_args(mrb, "|ii&", &x_step, &y_step, &block);
+
+    for (int i = 0; i < width; i += x_step) {
+        for (int j = 0; j < height; j += y_step) {
+            static const int ARGC = 2;
+
+            mrb_value argv[ARGC];
+            argv[0] = mrb_fixnum_value(i);
+            argv[1] = mrb_fixnum_value(j);
+
+            mrb_value value = mrb_yield_argv(mrb, block, ARGC, argv);
+            ofColor* color = BindColor::ToPtr(mrb, value);
+            newObj->setColor(i, j, *color);
+        }
+    }
+
+    newObj->update();
+
+    return BindImage::ToMrb(mrb, mrb_obj_class(mrb, self), newObj);
+}
+
 }
 
 //----------------------------------------------------------
@@ -293,7 +324,8 @@ void BindImage::Bind(mrb_state* mrb)
     mrb_define_method(mrb, cc,        "draw_sub",           draw_sub,           MRB_ARGS_ARG(6, 2));
     mrb_define_method(mrb, cc,        "height",             height,             MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,        "width",              width,              MRB_ARGS_NONE());
-    mrb_define_method(mrb, cc,        "each_pixels",        each_pixels,        MRB_ARGS_NONE());
+    mrb_define_method(mrb, cc,        "each_pixels",        each_pixels,        MRB_ARGS_OPT(2));
+    mrb_define_method(mrb, cc,        "map_pixels",         map_pixels,         MRB_ARGS_OPT(2));
 }
 
 }
