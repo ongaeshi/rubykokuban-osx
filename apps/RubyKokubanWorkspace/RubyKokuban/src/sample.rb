@@ -48,6 +48,18 @@ def draw
     circle(x + i + 2, y + j + 2, 2)
   end
 
+  x = 410; y = 50
+  description("set_color_test", x, y)
+  set_color(255, 0, 0, 64)
+  circle(x + 10, y + 10, 10)  
+
+  set_color(Color::Blue, 128)
+  circle(x + 20, y + 10, 10)  
+
+  set_color(33, 32, 110, 128)
+  circle(x + 30, y + 10, 10)  
+
+
   # debug info
   set_color(0, 0, 0)
   text(DebugInfo.fps, 10, 15)

@@ -51,12 +51,28 @@ mrb_value set_color(mrb_state *mrb, mrb_value self)
         // set_color(color)
         ofSetColor(*BindColor::ToPtr(mrb, argv[0]));
         break;
+    case 2:
+        // set_color(color, alpha)
+        ofSetColor(
+            *BindColor::ToPtr(mrb, argv[0])
+            , mrb_fixnum(mrb_Integer(mrb, argv[1]))
+            );
+        break;
     case 3:
         // set_color(r, g, b)
         ofSetColor(
             mrb_fixnum(mrb_Integer(mrb, argv[0]))
             , mrb_fixnum(mrb_Integer(mrb, argv[1]))
             , mrb_fixnum(mrb_Integer(mrb, argv[2]))
+            );
+        break;
+    case 4:
+        // set_color(r, g, b, a)
+        ofSetColor(
+            mrb_fixnum(mrb_Integer(mrb, argv[0]))
+            , mrb_fixnum(mrb_Integer(mrb, argv[1]))
+            , mrb_fixnum(mrb_Integer(mrb, argv[2]))
+            , mrb_fixnum(mrb_Integer(mrb, argv[3]))
             );
         break;
     default:
@@ -130,7 +146,7 @@ void BindGraphics(mrb_state* mrb)
     b.bind(                    "set_no_fill",         set_no_fill       );
     b.bind(                    "is_fill",             is_fill           );
     b.bind(                    "set_line_width",      set_line_width    );
-    mrb_define_method(mrb, cc, "set_color",           set_color         , MRB_ARGS_ARG(1, 2));
+    mrb_define_method(mrb, cc, "set_color",           set_color         , MRB_ARGS_ARG(1, 3));
     b.bind(                    "set_background",      set_background    );
     b.bind(                    "triangle",            triangle          );
     b.bind(                    "circle",              circle            );
