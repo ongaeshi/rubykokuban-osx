@@ -22,6 +22,11 @@ def update
 end
 
 def draw
+  x = 510; y = 50
+  description("set_background_test", x, y)
+  set_background(Color::Color::DarkSeaGreen)
+  # set_background(128, 128, 128)
+
   # Draw image
   x = 10; y = 50
   description("original", x, y)
@@ -58,7 +63,6 @@ def draw
 
   set_color(33, 32, 110, 128)
   circle(x + 30, y + 10, 10)  
-
 
   # debug info
   set_color(0, 0, 0)
