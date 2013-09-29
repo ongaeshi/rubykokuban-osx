@@ -32,9 +32,12 @@ mrb_value load(mrb_state *mrb, mrb_value self)
     mrb_get_args(mrb, "S", &str);
 
     string filename(mrb_string_value_ptr(mrb, str));
-    obj->loadImage(filename);
+    bool isSuccess = obj->loadImage(filename);
 
-    // error handling ..
+    if (!isSuccess) {
+        string message = "not found " + filename;
+        mrb_raise(mrb, E_ARGUMENT_ERROR, message.c_str());
+    }
 
     return BindImage::ToMrb(mrb, mrb_class_ptr(self), obj);
 }
