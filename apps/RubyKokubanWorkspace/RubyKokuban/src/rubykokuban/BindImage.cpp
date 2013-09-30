@@ -4,6 +4,7 @@
 #include "mruby/class.h"
 #include "mruby/data.h"
 #include "mruby/string.h"
+#include "ofAppRunner.h"
 #include "ofImage.h"
 #include "rubykokuban/BindColor.hpp"
 
@@ -47,9 +48,18 @@ mrb_value grab_screen(mrb_state *mrb, mrb_value self)
     ofImage* obj = new ofImage();
 
     mrb_int x, y, w, h;
-    mrb_get_args(mrb, "iiii", &x, &y, &w, &h);
-    
-    obj->grabScreen(x, y, w, h);
+
+    switch (mrb_get_args(mrb, "|iiii", &x, &y, &w, &h)) {
+    case 0:
+        obj->grabScreen(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
+        break;
+    case 4:
+        obj->grabScreen(x, y, w, h);
+        break;
+    default:
+        mrb_raise(mrb, E_TYPE_ERROR, "wrong number of arguments");
+        break;
+    }
 
     return BindImage::ToMrb(mrb, mrb_class_ptr(self), obj);
 }
@@ -307,7 +317,7 @@ void BindImage::Bind(mrb_state* mrb)
     struct RClass *cc = mrb_define_class(mrb, "Image", mrb->object_class);
     
     mrb_define_class_method(mrb , cc, "load",               load,               MRB_ARGS_REQ(1));
-    mrb_define_class_method(mrb , cc, "grab_screen",        grab_screen,        MRB_ARGS_REQ(4));
+    mrb_define_class_method(mrb , cc, "grab_screen",        grab_screen,        MRB_ARGS_OPT(4));
                                                              
     mrb_define_method(mrb, cc,        "clone",              clone,              MRB_ARGS_NONE());
     mrb_define_method(mrb, cc,        "save",               save,               MRB_ARGS_ARG(2, 1));

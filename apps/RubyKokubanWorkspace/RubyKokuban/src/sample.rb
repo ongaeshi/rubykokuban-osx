@@ -19,6 +19,11 @@ end
 def update
   @mosaic_power -= 0.05
   @mosaic_power = 16 if @mosaic_power < 1
+
+  if Input.mouse_down?(0)
+    @screenshotter ||= ScreenShotter.new(30)
+    @screenshotter.update
+  end
 end
 
 def draw
@@ -75,5 +80,19 @@ def description(text, x, y)
   text(text, x, y)
 end
 
-  
+class ScreenShotter
+  def initialize(interval = 30)
+    @index    = 0
+    @frame    = 0
+    @interval = interval
+  end
+
+  def update
+    if @frame % @interval == 0
+      Image.grab_screen.save("screenshot#{@index.to_s}.png")
+      @index += 1
+    end
+    @frame += 1
+  end
+end
 
