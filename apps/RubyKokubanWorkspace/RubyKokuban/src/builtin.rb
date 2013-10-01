@@ -88,3 +88,23 @@ module Console
     @text = []
   end
 end
+
+class SequenceShot
+  def initialize(interval = 6, limit = 50)
+    @interval = interval
+    @limit    = limit
+    @index    = 0
+    @frame    = 0
+  end
+
+  def update
+    return if @limit > 0 && @index >= @limit
+    
+    if @frame % @interval == 0
+      Image.grab_screen.save("sequence_shot_#{sprintf("%03d", @index)}.png")
+      @index += 1
+    end
+    
+    @frame += 1
+  end
+end
