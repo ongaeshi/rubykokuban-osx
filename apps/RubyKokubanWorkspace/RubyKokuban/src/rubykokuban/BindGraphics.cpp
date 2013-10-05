@@ -140,6 +140,16 @@ mrb_value set_background(mrb_state *mrb, mrb_value self)
     return mrb_nil_value();
 }
 
+mrb_value set_background_hex(mrb_state *mrb, mrb_value self)
+{
+    mrb_int h, a = LIMIT;
+    mrb_get_args(mrb, "i|i", &h, &a);
+
+    ofBackgroundHex(h, a);
+
+    return mrb_nil_value();
+}
+
 void triangle(float x1, float y1, float x2, float y2, float x3, float y3)
 {
     ofTriangle(x1, y1, x2, y2, x3, y3);
@@ -198,8 +208,9 @@ void BindGraphics(mrb_state* mrb)
     b.bind(                    "is_fill",             is_fill           );
     b.bind(                    "set_line_width",      set_line_width    );
     mrb_define_method(mrb, cc, "set_color",           set_color         , MRB_ARGS_ARG(1, 3));
-    mrb_define_method(mrb, cc, "set_color_hex",       set_color_hex     , MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, cc, "set_color_hex",       set_color_hex     , MRB_ARGS_ARG(1, 1));
     mrb_define_method(mrb, cc, "set_background",      set_background    , MRB_ARGS_ARG(1, 3));
+    mrb_define_method(mrb, cc, "set_background_hex",  set_background_hex, MRB_ARGS_ARG(1, 1));
     b.bind(                    "triangle",            triangle          );
     b.bind(                    "circle",              circle            );
     b.bind(                    "ellipse",             ellipse           );

@@ -29,8 +29,9 @@ end
 def draw
   x = 510; y = 50
   description("set_background_test", x, y)
-  set_background(Color::Color::DarkSeaGreen)
+  # set_background(Color::Color::DarkSeaGreen)
   # set_background(128, 128, 128)
+  set_background_hex(0xC9E8F1)
 
   # Draw image
   x = 10; y = 50
