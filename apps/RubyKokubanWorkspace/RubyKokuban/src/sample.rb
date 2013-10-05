@@ -69,6 +69,18 @@ def draw
   set_color(33, 32, 110, 128)
   circle(x + 30, y + 10, 10)  
 
+  x = 10; y = 150
+  description("set_color_hex_test", x, y)
+
+  set_color_hex(0xF3C759)
+  rect(x, y + 10, 40, 40)
+
+  set_color_hex(0x3DB680, 200)
+  rect(x + 20, y + 10, 40, 40)
+
+  set_color_hex(0xDA6272, 100)
+  rect(x + 40, y + 10, 40, 40)
+
   # debug info
   set_color(0, 0, 0)
   text(DebugInfo.fps, 10, 15)

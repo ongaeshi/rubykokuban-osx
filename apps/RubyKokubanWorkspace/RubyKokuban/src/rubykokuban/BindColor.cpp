@@ -23,7 +23,7 @@ void free(mrb_state *mrb, void *p)
 
 struct mrb_data_type data_type = { "rubykokuban_color", free };
 
-float LIMIT = 255;
+float LIMIT = 255.0f;
 
 mrb_value initialize(mrb_state *mrb, mrb_value self)
 {
@@ -37,7 +37,8 @@ mrb_value initialize(mrb_state *mrb, mrb_value self)
 
 mrb_value hex(mrb_state *mrb, mrb_value self)
 {
-    mrb_int h, a = LIMIT;
+    mrb_int h;
+    mrb_float a = LIMIT;
     mrb_get_args(mrb, "i|f", &h, &a);
 
     ofColor* obj = new ofColor(ofColor::fromHex(h, a));

@@ -8,6 +8,8 @@
 namespace rubykokuban {
 
 namespace {
+float LIMIT = 255.0f;
+
 mrb_value set_fill(mrb_state *mrb, mrb_value self)
 {
     mrb_bool is_fill;
@@ -79,6 +81,17 @@ mrb_value set_color(mrb_state *mrb, mrb_value self)
         mrb_raise(mrb, E_TYPE_ERROR, "wrong number of arguments");
         break;
     }
+
+    return mrb_nil_value();
+}
+
+mrb_value set_color_hex(mrb_state *mrb, mrb_value self)
+{
+    mrb_int h;
+    mrb_float a = LIMIT;
+    mrb_get_args(mrb, "i|f", &h, &a);
+
+    ofSetColor(ofColor::fromHex(h, a));
 
     return mrb_nil_value();
 }
@@ -185,6 +198,7 @@ void BindGraphics(mrb_state* mrb)
     b.bind(                    "is_fill",             is_fill           );
     b.bind(                    "set_line_width",      set_line_width    );
     mrb_define_method(mrb, cc, "set_color",           set_color         , MRB_ARGS_ARG(1, 3));
+    mrb_define_method(mrb, cc, "set_color_hex",       set_color_hex     , MRB_ARGS_REQ(1));
     mrb_define_method(mrb, cc, "set_background",      set_background    , MRB_ARGS_ARG(1, 3));
     b.bind(                    "triangle",            triangle          );
     b.bind(                    "circle",              circle            );
