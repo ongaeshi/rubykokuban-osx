@@ -9,7 +9,7 @@ struct mrb_state;
 //--------------------------------------------------------------------------------
 class testApp : public ofBaseApp {
 public:
-    testApp(const char* aRootDir, const char* aScriptPath);
+    testApp(const char* aScriptPath);
 
     void setup();
     void update();

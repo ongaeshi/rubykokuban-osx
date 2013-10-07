@@ -3,9 +3,9 @@
 #include "rubykokuban/BindInput.hpp"
 
 //--------------------------------------------------------------
-testApp::testApp(const char* aRootDir, const char* aScriptPath)
+testApp::testApp(const char* aScriptPath)
 : mInput()
-, mScriptEngine(aRootDir, aScriptPath)
+, mScriptEngine(aScriptPath)
 {
     rubykokuban::BindInput::Setup(mInput);
 }

@@ -18,17 +18,15 @@ int main(int argc, const char* argv[])
     //     printf("argv[%d]: \"%s\"\n", i, argv[i]);
     // }
 
-    const char* rootDir    = argv[1];
-    const char* scriptPath = argv[2];
+    const char* scriptPath;
 
-    if (isDebugMode(argc, argv)) {
-        rootDir    = "/Users/ongaeshi/Documents/rubykokuban-osx/apps/RubyKokubanWorkspace/RubyKokuban/src/"; // dirty code
-        scriptPath = "sample.rb";
+    if (!isDebugMode(argc, argv)) {
+        scriptPath = argv[1];
+    } else {
+        scriptPath = "/Users/ongaeshi/Documents/rubykokuban-osx/apps/RubyKokubanWorkspace/RubyKokuban/src/sample.rb"; // Need full path (Dirty code)
     }
-
-    // printf("rootDir: %s, scriptPath: %s\n", rootDir, scriptPath);
 
     ofAppGlutWindow window;                       // create a window
     ofSetupOpenGL(&window, 1024, 768, OF_WINDOW); // set width, height, mode (OF_WINDOW or OF_FULLSCREEN)
-    ofRunApp(new testApp(rootDir, scriptPath));   // start the app
+    ofRunApp(new testApp(scriptPath));            // start the app
 }

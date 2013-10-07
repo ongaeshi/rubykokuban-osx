@@ -8,7 +8,7 @@ namespace rubykokuban {
 
 class ScriptEngine {
 public:
-    ScriptEngine(const char* aRootDir, const char* aScriptPath);
+    ScriptEngine(const char* aScriptPath);
     ~ScriptEngine();
 
     mrb_state* mrb() { return mMrb; }
@@ -35,8 +35,7 @@ private:
     bool isExistFunction(mrb_value aSelf, const char* aFuncName);
     void closeOnException();
 
-    const char* mRootDir;
-    const char* mScriptPath;
+    const char* mScriptPath;            // Need full path
     mrb_state*  mMrb;
     std::string mErrorMsg;
     struct RClass* mConsoleModule;

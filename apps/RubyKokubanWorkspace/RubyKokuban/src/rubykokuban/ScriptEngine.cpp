@@ -199,9 +199,8 @@ const uint8_t BuiltIn[] = {
 };
 
 //----------------------------------------------------------
-ScriptEngine::ScriptEngine(const char* aRootDir, const char* aScriptPath)
-: mRootDir(aRootDir)
-, mScriptPath(aScriptPath)
+ScriptEngine::ScriptEngine(const char* aScriptPath)
+: mScriptPath(aScriptPath)
 , mMrb(NULL)
 , mErrorMsg()
 , mConsoleModule(NULL)
@@ -214,11 +213,20 @@ ScriptEngine::~ScriptEngine()
     close();
 }
 
+namespace {
+string dirname(string aPath)
+{
+    return aPath = aPath.substr(0, aPath.find_last_of('/')) + '/'; // Need last '/'
+}
+}
+
 //----------------------------------------------------------
 void ScriptEngine::setup()
 {
+    string dataRoot = dirname(mScriptPath);
+    
     // set texture & script root
-    ofSetDataPathRoot(mRootDir);
+    ofSetDataPathRoot(dataRoot);
 
     // open mrb
     open();
@@ -308,8 +316,7 @@ void ScriptEngine::open()
 //----------------------------------------------------------
 void ScriptEngine::load()
 {
-    // printf("mScriptPath: %s\n", ofToDataPath(mScriptPath).c_str());
-    FILE *fd = fopen(ofToDataPath(mScriptPath).c_str(), "r");
+    FILE *fd = fopen(mScriptPath, "r");
     mrb_load_file(mMrb, fd);
     fclose(fd);
 }
